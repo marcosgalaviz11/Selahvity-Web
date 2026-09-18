@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SELAHVITY - Book Club</title>
+  <meta name="description" content="SELAHVITY Book Club - Una comunidad creada para compartir, debatir y disfrutar la literatura.">
+  <link rel="icon" type="image/png" href="assets/images/selahvity_s.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#190905',
+            lime: '#e25822',
+            sand: '#df9d79',
+            rust: '#701800',
+            cardbg: '#270f08',
+            cardhover: '#36150c',
+            cardborder: '#4d1c10',
+          },
+          fontFamily: {
+            sans: ['Satoshi', 'sans-serif'],
+            handwriting: ['"Sedgwick Ave"', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#190905] text-[#fdf6f0] antialiased selection:bg-[#e25822] selection:text-white relative">
+
+  <!-- Illustrated Noise Grain Texture Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- TOP STICKY NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-3 pointer-events-none">
+    <nav class="pointer-events-auto flex items-center justify-between w-full max-w-6xl bg-[#220d07]/90 backdrop-blur-md border border-[#4d1c10] rounded-2xl px-5 py-2.5 shadow-2xl transition-all">
+      <!-- Logo: Letter 'S' from SELAHVITY -->
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="h-9 w-9 rounded-xl bg-[#36150c] border border-[#5a2215] flex items-center justify-center p-1 group-hover:border-[#e25822] transition-colors shadow-md">
+          <img src="assets/images/selahvity_s.png" alt="S" class="h-7 w-auto object-contain filter brightness-125">
+        </div>
+        <span class="text-xs font-black tracking-widest uppercase text-[#df9d79] group-hover:text-white transition-colors">SELAHVITY</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-[#2d120a] border border-[#4d1c10] rounded-xl p-1">
+        <a href="#libro-actual" class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#df9d79] hover:text-white hover:bg-[#3d180d] rounded-lg transition-all">Lectura Actual</a>
+        <a href="#process" class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#df9d79] hover:text-white hover:bg-[#3d180d] rounded-lg transition-all">Cómo funciona</a>
+        <a href="#pricing" class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#df9d79] hover:text-white hover:bg-[#3d180d] rounded-lg transition-all">Membresía</a>
+        <a href="#faqs" class="px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-[#df9d79] hover:text-white hover:bg-[#3d180d] rounded-lg transition-all">Preguntas</a>
+      </div>
+
+      <!-- Right Action CTA -->
+      <div class="flex items-center space-x-3">
+        <a href="#contact" class="hidden sm:inline-flex btn-primary px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider">
+          Unirte
+        </a>
+        <!-- Mobile hamburger button -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center justify-center p-2 rounded-xl bg-[#32150c] text-[#df9d79] hover:text-white focus:outline-none">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-x-4 top-20 bg-[#220d07] border border-[#4d1c10] rounded-2xl p-6 shadow-2xl pointer-events-auto flex flex-col space-y-4">
+      <div class="flex justify-between items-center pb-3 border-b border-[#4d1c10]">
+        <span class="text-xs uppercase font-bold text-[#df9d79] tracking-wider">Menú</span>
+        <button id="mobile-menu-close" class="text-[#df9d79] hover:text-white p-1">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <a href="#libro-actual" class="text-base font-bold text-[#fdf6f0] hover:text-[#e25822] transition-colors">Lectura Actual</a>
+      <a href="#process" class="text-base font-bold text-[#fdf6f0] hover:text-[#e25822] transition-colors">Cómo funciona</a>
+      <a href="#pricing" class="text-base font-bold text-[#fdf6f0] hover:text-[#e25822] transition-colors">Membresía</a>
+      <a href="#faqs" class="text-base font-bold text-[#fdf6f0] hover:text-[#e25822] transition-colors">Preguntas</a>
+      <a href="#contact" class="btn-primary w-full py-3 rounded-xl text-center text-sm font-bold uppercase tracking-wide mt-2">Unirte</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-32 md:pt-40 pb-16 px-4 max-w-7xl mx-auto overflow-hidden">
+    <!-- Subtle Background Glows (Warm Terracotta / Flame Amber) -->
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[380px] bg-[#e25822]/20 blur-[150px] pointer-events-none rounded-full"></div>
+
+    <div class="flex flex-col items-center text-center relative z-10">
+      <!-- Main Headline: SELAHVITY graphic -->
+      <h1 class="flex flex-col items-center justify-center max-w-4xl w-full mx-auto my-2">
+        <span class="sr-only">SELAHVITY</span>
+        <img src="assets/images/selahvity_transparent.png" alt="SELAHVITY" class="w-full max-w-[480px] sm:max-w-[650px] md:max-w-[760px] h-auto object-contain select-none pointer-events-none drop-shadow-[0_15px_35px_rgba(226,88,34,0.35)]">
+      </h1>
+
+      <!-- Subheading: Book Club -->
+      <h2 class="font-serif-literary italic text-3xl sm:text-5xl md:text-6xl font-normal text-[#df9d79] tracking-wide mt-2 mb-6 drop-shadow-md">
+        Book Club
+      </h2>
+
+      <!-- Description Paragraph -->
+      <p class="font-serif-literary text-lg sm:text-2xl text-[#d7a78e] max-w-2xl font-normal leading-relaxed mb-10">
+        Un espacio de encuentro para descubrir, debatir y habitar grandes historias clásicas y de fantasía.
+      </p>
+
+      <!-- Action Button (Unirte) -->
+      <div class="flex items-center justify-center">
+        <a href="#libro-actual" class="btn-primary px-12 py-4 rounded-xl text-base sm:text-lg font-bold uppercase tracking-widest shadow-2xl hover:scale-105 transition-all duration-300">
+          Unirte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DEDICADA: LECTURA ACTUAL - EL SOBRINO DEL MAGO (EDITORIAL LITERARIO) -->
+  <section id="libro-actual" class="py-20 px-4 max-w-6xl mx-auto scroll-mt-24">
+    <div class="bg-[#220d07]/90 border border-[#4d1c10] sm:rounded-2xl p-6 sm:p-10 lg:p-14 shadow-2xl relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <!-- Tapa del Libro con estética física real (Spine, sombras y relieve) -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="book-physical-wrap max-w-[290px] sm:max-w-[340px] w-full">
+            <div class="book-physical cursor-pointer">
+              <img src="assets/images/el_sobrino_del_mago.jpg" alt="El Sobrino del Mago - C.S. Lewis" class="w-full h-auto object-cover select-none">
+            </div>
+          </div>
+          <p class="font-serif-literary italic text-sm text-[#ab7358] mt-6 tracking-wide text-center">
+            — Primera edición de tertulia · C. S. Lewis —
+          </p>
+        </div>
+
+        <!-- Sinopsis y Contenido Editorial -->
+        <div class="lg:col-span-7">
+          <!-- Marbete editorial -->
+          <div class="flex items-center gap-3 text-xs tracking-[0.25em] uppercase text-[#e25822] font-semibold mb-4">
+            <span>Volumen I</span>
+            <span class="h-px w-8 bg-[#e25822]/60"></span>
+            <span>Lectura de Temporada</span>
+          </div>
+
+          <h3 class="font-serif-literary text-4xl sm:text-6xl font-normal text-[#fdf6f0] tracking-tight leading-none mb-3">
+            El Sobrino del Mago
+          </h3>
+          <p class="font-serif-literary italic text-xl sm:text-2xl text-[#df9d79] mb-6">
+            por C. S. Lewis <span class="text-xs font-sans not-italic text-[#ab7358] tracking-widest uppercase ml-2">· Las Crónicas de Narnia</span>
+          </p>
+
+          <!-- Cita Epígrafe -->
+          <blockquote class="font-serif-literary italic text-lg sm:text-xl text-[#f3d3c1] border-l-2 border-[#e25822] pl-5 my-6 leading-relaxed">
+            «Aquel no era un lugar donde las cosas sucedieran, sino el sitio desde el cual se podía partir hacia cualquier mundo.»
+          </blockquote>
+
+          <!-- Sinopsis con letra capital clásica -->
+          <div class="font-serif-literary text-lg sm:text-xl text-[#dfc3b5] leading-relaxed space-y-4 mb-8">
+            <p class="drop-cap">
+              Dos amigos inseparables, Digory y Polly, descubren por accidente los secretos del tío Andrew y unos misteriosos anillos de polvo primordial. Transportados al enigmático Bosque entre los Mundos, cruzan estanques quietos hacia reinos olvidados.
+            </p>
+            <p>
+              Allí despiertan sin saberlo a la temible Reina Jadis, desatando una travesía que culmina con el asombro más puro: la fundación de Narnia nacida bajo el majestuoso canto del león Aslan.
+            </p>
+          </div>
+
+          <!-- Colofón y detalles de tertulia -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-[#4d1c10] font-serif-literary mb-8">
+            <div>
+              <span class="block text-[11px] uppercase font-sans tracking-widest text-[#ab7358] mb-1">Encuentro</span>
+              <span class="text-lg sm:text-xl text-[#fdf6f0]">Jueves 19:00</span>
+            </div>
+            <div>
+              <span class="block text-[11px] uppercase font-sans tracking-widest text-[#ab7358] mb-1">Ritmo</span>
+              <span class="text-lg sm:text-xl text-[#fdf6f0]">3 cap. por semana</span>
+            </div>
+            <div>
+              <span class="block text-[11px] uppercase font-sans tracking-widest text-[#ab7358] mb-1">Modalidad</span>
+              <span class="text-lg sm:text-xl text-[#e25822] italic">Tertulia en vivo</span>
+            </div>
+          </div>
+
+          <!-- Acción -->
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <a href="#contact" class="btn-primary px-10 py-4 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-widest shadow-xl hover:scale-105 transition-all">
+              Unirte a la Tertulia
+            </a>
+            <span class="font-serif-literary italic text-sm text-[#ab7358]">
+              Guía de lectura y acceso al círculo literario incluidos.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 50-TASK RUNNING TICKER MARQUEE -->
+  <section class="py-6 border-y border-[#4d1c10] bg-[#220d07]/70 overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-content space-x-6">
+        <span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>C.S. Lewis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Las Crónicas de Narnia</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Sobrino del Mago</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Bosque entre los Mundos</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Los Anillos Mágicos</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Despertar de Jadis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Canto de Aslan</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>La Creación de Narnia</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Árbol de la Vida</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Encuentros Semanales</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Debates en Vivo</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Guías de Estudio</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Club de Lectura Mensual</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Comunidad Privada</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Círculo Literario</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Preguntas de Análisis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Lecturas Clásicas</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Fantasía & Filosofía</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Selahvity Book Club</span>
+      </div>
+      <div class="marquee-content space-x-6" aria-hidden="true">
+        <span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>C.S. Lewis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Las Crónicas de Narnia</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Sobrino del Mago</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Bosque entre los Mundos</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Los Anillos Mágicos</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Despertar de Jadis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Canto de Aslan</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>La Creación de Narnia</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>El Árbol de la Vida</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Encuentros Semanales</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Debates en Vivo</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Guías de Estudio</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Club de Lectura Mensual</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Comunidad Privada</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Círculo Literario</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Preguntas de Análisis</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Lecturas Clásicas</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Fantasía & Filosofía</span><span class="inline-flex items-center text-[#df9d79] text-sm font-medium whitespace-nowrap"><span class="h-1.5 w-1.5 rounded-full bg-[#e25822] mr-3"></span>Selahvity Book Club</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS / "SOUND FAMILIAR?" SECTION -->
+  <section class="py-28 px-4 max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="font-handwriting text-[#e25822] text-2xl md:text-3xl block mb-2 rotate-[-2deg]">¿Te suena familiar?</span>
+      <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight max-w-3xl mx-auto leading-tight">
+        Leer no debería sentirse como una tarea solitaria ni una lista interminable
+      </h2>
+    </div>
+
+    <!-- Floating Speech Bubbles Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-20">
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Compro libros que luego se quedan acumulando polvo en la mesa.”</p>
+      </div>
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Nadie a mi alrededor lee las mismas historias ni comparte mis gustos.”</p>
+      </div>
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Empiezo con ganas pero pierdo el ritmo a mitad de camino.”</p>
+      </div>
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Quiero debatir los giros de la trama sin que nadie me haga spoilers.”</p>
+      </div>
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Los clubes tradicionales tienen lecturas densas y poco inspiradoras.”</p>
+      </div>
+      <div class="speech-bubble p-5">
+        <p class="text-[#fdf6f0] text-sm font-medium">“Me cuesta encontrar el tiempo entre el trabajo y la rutina diaria.”</p>
+      </div>
+      <div class="speech-bubble p-5 sm:col-span-2 lg:col-span-3">
+        <p class="text-[#fdf6f0] text-sm font-medium text-center">“Buscaba una comunidad cálida, motivadora y con lecturas que de verdad enganchen.”</p>
+      </div>
+    </div>
+
+    <!-- Solution Banner Card -->
+    <div class="bg-gradient-to-b from-[#31140c] to-[#270f08] border border-[#4d1c10] rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      <div class="max-w-3xl">
+        <span class="text-[#e25822] font-bold uppercase tracking-wider text-xs">Una sola decisión y estás dentro.</span>
+        <h3 class="text-3xl sm:text-4xl font-black text-white mt-2 mb-6 leading-tight">
+          Hacemos que disfrutar la lectura en comunidad sea increíblemente simple.
+        </h3>
+
+        <!-- Core Checklist -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="text-[#df9d79] text-sm font-medium">Un libro seleccionado con cuidado cada mes</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="text-[#df9d79] text-sm font-medium">Guías de preguntas y análisis por capítulos</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="text-[#df9d79] text-sm font-medium">Canal privado en Discord 24/7 sin presiones</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="text-[#df9d79] text-sm font-medium">Encuentros virtuales distendidos y enriquecedores</span>
+          </div>
+          <div class="flex items-center space-x-3 sm:col-span-2">
+            <svg class="w-5 h-5 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <span class="text-[#df9d79] text-sm font-medium">Una cuota simple y accesible sin permanencia</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <a href="#contact" class="btn-primary px-8 py-4 rounded-xl text-xs sm:text-sm font-black uppercase tracking-wider">
+            UNIRME A SELAHVITY
+          </a>
+          <span class="text-xs text-[#df9d79] font-medium">
+            Una comunidad con más de 150 apasionados de la lectura
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 6-STEP PROCESS SECTION (#process) -->
+  <section id="process" class="py-28 px-4 max-w-7xl mx-auto scroll-mt-20">
+    <div class="text-center mb-16">
+      <h3 class="text-5xl sm:text-7xl font-black text-white tracking-tight mb-4">
+        Cómo Funciona
+      </h3>
+      <p class="text-[#d7a78e] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+        Sin estrés y a tu propio ritmo. Nuestro formato en 6 pasos te permite disfrutar de cada página con una comunidad que comparte tu entusiasmo.
+      </p>
+
+      <!-- 4 Value Pills -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <span class="bg-[#2d120a] border border-[#4d1c10] rounded-full px-4 py-1.5 text-xs font-bold text-[#df9d79]">Lecturas Curadas</span>
+        <span class="bg-[#2d120a] border border-[#4d1c10] rounded-full px-4 py-1.5 text-xs font-bold text-[#df9d79]">Ritmo Flexible</span>
+        <span class="bg-[#2d120a] border border-[#4d1c10] rounded-full px-4 py-1.5 text-xs font-bold text-[#df9d79]">Debates en Vivo</span>
+        <span class="bg-[#2d120a] border border-[#4d1c10] rounded-full px-4 py-1.5 text-xs font-bold text-[#df9d79]">100% Sin Permanencia</span>
+      </div>
+
+      <div class="font-handwriting text-[#e25822] text-2xl rotate-[-2deg]">
+        ¡Todo listo para empezar este mes!
+      </div>
+    </div>
+
+    <!-- 6 Process Step Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <!-- Step 1 -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-7 relative hover:border-[#e25822]/60 transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 1</span>
+          <span class="text-4xl font-black text-[#5a2114]">01</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Inscripción</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Te unes al club y recibes de inmediato la bienvenida y el acceso a la comunidad privada.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-7 relative hover:border-[#e25822]/60 transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 2</span>
+          <span class="text-4xl font-black text-[#5a2114]">02</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Guía & Calendario</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Descargas la guía del libro del mes con el desglose semanal de capítulos sugeridos.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-7 relative hover:border-[#e25822]/60 transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 3</span>
+          <span class="text-4xl font-black text-[#5a2114]">03</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Lectura a tu Ritmo</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Lees cómodamente donde y cuando quieras, tomando notas o destacando tus pasajes favoritos.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-7 relative hover:border-[#e25822]/60 transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 4</span>
+          <span class="text-4xl font-black text-[#5a2114]">04</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Comunidad Discord</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Compartes impresiones y teorías en los canales por capítulos protegidos contra spoilers.
+        </p>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-7 relative hover:border-[#e25822]/60 transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 5</span>
+          <span class="text-4xl font-black text-[#5a2114]">05</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Encuentro en Vivo</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Nos reunimos virtualmente cada semana para debatir a fondo y tomar un café o té juntos.
+        </p>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="bg-[#270f08] border border-[#e25822]/60 rounded-2xl p-7 relative hover:border-[#e25822] transition-all">
+        <div class="flex justify-between items-start mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#e25822]">Paso 6</span>
+          <span class="text-4xl font-black text-[#e25822]">06</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-2">Siguiente Viaje</h4>
+        <p class="text-[#d7a78e] text-sm leading-relaxed">
+          Votamos entre todos el siguiente título para el próximo mes y mantenemos viva la llama.
+        </p>
+      </div>
+    </div>
+
+    <!-- Guarantee Ribbon Banner -->
+    <div class="py-4 border-y border-[#4d1c10] bg-[#220d07] overflow-hidden rounded-2xl">
+      <div class="marquee-container">
+        <div class="marquee-content space-x-8 text-xs font-black uppercase tracking-widest text-[#df9d79]">
+          <span>Comunidad Activa</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Lecturas Clásicas & Contemporáneas</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Sin Spoilers</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Debates Semanales</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Selahvity Book Club</span>
+          <span class="text-[#e25822]">•</span>
+        </div>
+        <div class="marquee-content space-x-8 text-xs font-black uppercase tracking-widest text-[#df9d79]" aria-hidden="true">
+          <span>Comunidad Activa</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Lecturas Clásicas & Contemporáneas</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Sin Spoilers</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Debates Semanales</span>
+          <span class="text-[#e25822]">•</span>
+          <span>Selahvity Book Club</span>
+          <span class="text-[#e25822]">•</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION -->
+  <section class="py-20 px-4 max-w-5xl mx-auto text-center">
+    <span class="font-handwriting text-[#e25822] text-2xl md:text-3xl block mb-3">encuentra tu tribu lectora</span>
+    <h3 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight mb-6">
+      Una Comunidad Pensada para Conversaciones que Dejan Huella
+    </h3>
+    <p class="text-lg sm:text-xl text-[#d7a78e] font-normal max-w-2xl mx-auto leading-relaxed">
+      No se trata solo de devorar páginas, sino de descubrir matices, compartir emociones y conectar con personas que sienten la misma curiosidad que tú.
+    </p>
+  </section>
+
+  <!-- PRICING SECTION (#pricing) -->
+  <section id="pricing" class="py-28 px-4 max-w-6xl mx-auto scroll-mt-20">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-2 bg-[#4d1c10]/60 border border-[#e25822]/40 rounded-full px-4 py-1 text-xs font-bold text-[#e25822] mb-4">
+        <span class="h-2 w-2 rounded-full bg-[#e25822] animate-pulse"></span>
+        <span>Inscripciones Abiertas</span>
+      </div>
+      <h3 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-4">
+        Membresías Simples y Claras
+      </h3>
+      <p class="text-[#d7a78e] text-lg">Todo incluido. Cancela cuando quieras sin preguntas.</p>
+    </div>
+
+    <!-- 2 Plans Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Plan Mensual -->
+      <div class="bg-[#270f08] border border-[#4d1c10] rounded-3xl p-8 sm:p-10 flex flex-col justify-between hover:border-[#e25822]/60 transition-all shadow-xl">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xl font-black text-white">Club Mensual</h4>
+            <span class="bg-[#32150c] text-[#df9d79] text-xs font-bold px-3 py-1 rounded-full border border-[#4d1c10]">Sin compromiso</span>
+          </div>
+
+          <div class="flex items-baseline space-x-2 mb-2">
+            <span class="text-5xl sm:text-6xl font-black text-white">$15</span>
+            <span class="text-[#df9d79] font-bold text-sm">USD / mes</span>
+          </div>
+          <p class="text-[#df9d79] text-xs font-medium uppercase tracking-wider mb-8">Pago mensual flexible</p>
+
+          <a href="#contact" class="btn-primary w-full py-4 rounded-xl text-center text-sm font-black uppercase tracking-wider mb-3">
+            Unirte al Club
+          </a>
+          <a href="#contact" class="block text-center text-xs font-bold text-[#df9d79] hover:text-white transition-colors mb-8">
+            ¿Dudas? Escríbenos directamente
+          </a>
+
+          <div class="border-t border-[#4d1c10] pt-6">
+            <span class="text-xs font-bold text-[#df9d79] uppercase tracking-wider block mb-4">Qué incluye:</span>
+            <ul class="space-y-3 text-sm text-[#fdf6f0]">
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Acceso al libro y lecturas del mes</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Comunidad privada en Discord 24/7</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Guía digital de lectura y preguntas clave</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Encuentros virtuales semanales en vivo</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Votación del próximo libro del club</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Anual -->
+      <div class="bg-[#270f08] border-2 border-[#e25822] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-2xl relative">
+        <div class="absolute -top-3.5 right-8 bg-[#e25822] text-white font-black text-[11px] uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md">
+          Ahorra 2 Meses
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="text-xl font-black text-white">Pase Anual</h4>
+            <span class="bg-[#e25822]/15 text-[#e25822] text-xs font-bold px-3 py-1 rounded-full border border-[#e25822]/40">Mejor Valor</span>
+          </div>
+
+          <div class="flex items-baseline space-x-2 mb-2">
+            <span class="text-5xl sm:text-6xl font-black text-white">$149</span>
+            <span class="text-[#df9d79] font-bold text-sm">USD / año</span>
+          </div>
+          <p class="text-[#df9d79] text-xs font-medium uppercase tracking-wider mb-8">Acceso total por 12 meses</p>
+
+          <a href="#contact" class="btn-primary w-full py-4 rounded-xl text-center text-sm font-black uppercase tracking-wider mb-3">
+            Unirte con Descuento
+          </a>
+          <a href="#contact" class="block text-center text-xs font-bold text-[#df9d79] hover:text-white transition-colors mb-8">
+            Incluye regalos exclusivos de bienvenida
+          </a>
+
+          <div class="border-t border-[#4d1c10] pt-6">
+            <span class="text-xs font-bold text-[#df9d79] uppercase tracking-wider block mb-4">Qué incluye:</span>
+            <ul class="space-y-3 text-sm text-[#fdf6f0]">
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Todo lo del plan mensual</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>2 meses gratis de membresía</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Grabaciones completas de todos los encuentros</span>
+              </li>
+              <li class="flex items-center space-x-3">
+                <svg class="w-4 h-4 text-[#e25822] shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Pack de marcapáginas e ilustraciones SELAHVITY</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE SECTION -->
+  <section class="py-28 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h3 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-3">Galería & Lecturas</h3>
+      <p class="text-[#d7a78e] text-base sm:text-lg font-medium">Títulos, universos y momentos compartidos en nuestro club.</p>
+    </div>
+
+    <!-- Project Tabs / Filter Buttons -->
+    <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 gap-2.5 mb-10 no-scrollbar">
+      
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#e25822] text-white border-[#e25822] hover:border-[#e25822]"
+        data-title="EL SOBRINO DEL MAGO"
+        data-url="#libro-actual"
+        data-img="assets/images/el_sobrino_del_mago.jpg">
+        EL SOBRINO DEL MAGO
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="SELAHVITY ARTWORK"
+        data-url="#"
+        data-img="assets/images/selahvity_art.jpg">
+        SELAHVITY ARTWORK
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="ALLARD STUDIO"
+        data-url="https://www.allardstudio.com/"
+        data-img="https://framerusercontent.com/images/4Fxb5styWIDC5Gt0vzuoL2KanMg.png?width=1435">
+        ALLARD STUDIO
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="Steven Moyes"
+        data-url="https://www.stevenmoyes.com/"
+        data-img="https://framerusercontent.com/images/3QWv7m4X6mJ79HLQTrbhYaOuWw.png?width=1438">
+        Steven Moyes
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="AFTERNOON ADVENTURES"
+        data-url="https://www.afternoonadventures.ca/"
+        data-img="https://framerusercontent.com/images/dZGrrThqiHAihT78uOu8z7RDPc.jpg?width=1200">
+        AFTERNOON ADVENTURES
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="WINSTON MOORE"
+        data-url="https://www.winstonmoore.design/"
+        data-img="https://framerusercontent.com/images/wLkJg7RtzszvvoVupH0VmP12jVU.jpg?width=1200">
+        WINSTON MOORE
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="GOLDEN HOUR"
+        data-url="https://goldenhour-template.webflow.io/?via=jamie14"
+        data-img="https://framerusercontent.com/images/qnhgtUjvJkhIDCUNOhgwHDa8DwM.jpg?width=1200">
+        GOLDEN HOUR
+      </button>
+    
+
+      <button class="work-tab px-4 py-2.5 rounded-xl border font-bold text-xs md:text-sm tracking-wide uppercase transition-all whitespace-nowrap bg-[#270f08] text-[#df9d79] border-[#4d1c10] hover:border-[#e25822]"
+        data-title="CLOVER COACH"
+        data-url="https://clover-coach.framer.website/?via=jamie14"
+        data-img="https://framerusercontent.com/images/gZhJDPBdC80IckdnyR2vcEQh3aQ.jpg?width=1200">
+        CLOVER COACH
+      </button>
+    
+    </div>
+
+    <!-- Interactive Preview Mockup Card -->
+    <div class="bg-[#270f08] border border-[#4d1c10] rounded-3xl p-4 sm:p-6 shadow-2xl max-w-5xl mx-auto">
+      <div class="flex items-center justify-between pb-4 mb-4 border-b border-[#4d1c10] px-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+          <span id="work-preview-title" class="ml-4 text-xs font-bold text-[#df9d79] uppercase tracking-wider">EL SOBRINO DEL MAGO</span>
+        </div>
+        <a id="work-preview-link" href="#libro-actual" class="inline-flex items-center space-x-1 text-xs font-bold text-[#e25822] hover:underline">
+          <span>Ver Sinopsis</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden bg-black/60 aspect-[16/10] border border-[#4d1c10] flex items-center justify-center p-2">
+        <img id="work-preview-img" src="assets/images/el_sobrino_del_mago.jpg" alt="Preview" class="max-h-full w-auto object-contain transition-opacity duration-300">
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="py-28 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="font-handwriting text-[#e25822] text-2xl md:text-3xl block mb-2">Conoce al equipo organizador</span>
+      <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight max-w-3xl mx-auto leading-tight">
+        Detrás de cada encuentro y selección literaria
+      </h3>
+    </div>
+
+    <!-- 7 Team Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 mb-16">
+      
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/KN5964b1OzIlasioDuFiJ8ZJE.png?width=1307" alt="Jamie - Coordinador & Debate en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Jamie</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Coordinador & Debate</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/ztx49A1sVUtL2XL4QMSr4E7F3s8.png?width=1307" alt="Cal - Dirección Editorial en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Cal</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Dirección Editorial</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/0CpsLtu9R6A8gy0bT3bs97MlI.png?width=1307" alt="Jill - Curaduría Literaria en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Jill</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Curaduría Literaria</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/0BSrOWyrB46diimufyDTwIyPDU.png?width=1307" alt="Dave - Guías de Lectura en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Dave</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Guías de Lectura</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/nEdE6ljLntlr49r5kQeud6WotM.png?width=1307" alt="AJ - Comunidad & Discord en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">AJ</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Comunidad & Discord</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/dvqrfEdmocgpgfEPcrJvhBpl8.png?width=1307" alt="Vanessa - Eventos en Vivo en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Vanessa</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Eventos en Vivo</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+
+      <div class="group relative bg-[#270f08] border border-[#4d1c10] rounded-2xl p-4 transition-all duration-300 hover:border-[#e25822]/60 hover:-translate-y-1 hover:shadow-xl">
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-[#1d0a05] mb-3 border border-[#4d1c10]">
+          <img src="https://framerusercontent.com/images/2ZWp2C6Mqp3x7VuPrulxBRBhFjQ.png?width=1256" alt="Angela - Modificación & Reseñas en SELAHVITY" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-base text-[#fdf6f0]">Angela</h4>
+            <p class="text-xs text-[#df9d79] font-medium">Modificación & Reseñas</p>
+          </div>
+          <span class="inline-flex h-2 w-2 rounded-full bg-[#e25822]"></span>
+        </div>
+      </div>
+    
+    </div>
+
+    <!-- Mission Statement Quote -->
+    <div class="bg-[#270f08] border border-[#4d1c10] rounded-3xl p-8 sm:p-12 text-center max-w-4xl mx-auto">
+      <p class="text-lg sm:text-xl text-[#fdf6f0] font-normal leading-relaxed mb-6">
+        “Creamos SELAHVITY Book Club porque leer en compañía multiplica el placer de la historia. Nos emociona ver cómo un mismo pasaje despierta reflexiones distintas en cada persona y cómo la conversación crea una amistad genuina entre lectores.”
+      </p>
+      <a href="#contact" class="btn-primary px-8 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider">
+        Unirte a la Comunidad
+      </a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS MARQUEE -->
+  <section class="py-16 bg-[#220d07]/70 border-y border-[#4d1c10] overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-content space-x-6">
+        
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"La mejor comunidad para redescubrir la literatura clásica y compartir reflexiones profundas."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Chris Klop</span>
+      <span class="text-xs text-[#ab7358]">Miembro desde 2024</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Los debates de cada semana me han hecho amar de nuevo el hábito de leer sin prisas."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Jill Felty</span>
+      <span class="text-xs text-[#ab7358]">Lectora activa</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Increíble cómo un libro de Narnia puede abrir conversaciones tan ricas entre lectores de todo el mundo."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Dan Moore</span>
+      <span class="text-xs text-[#ab7358]">Miembro Club</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Tener la guía de lectura y el encuentro semanal le dio orden a mi lectura personal."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Katrina Miller</span>
+      <span class="text-xs text-[#ab7358]">Lectora entusiasta</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Una experiencia literaria cercana, profunda y enriquecedora en cada capítulo."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Syd Martin</span>
+      <span class="text-xs text-[#ab7358]">Miembro Narnia</span>
+    </div>
+  </div>
+
+      </div>
+      <div class="marquee-content space-x-6" aria-hidden="true">
+        
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"La mejor comunidad para redescubrir la literatura clásica y compartir reflexiones profundas."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Chris Klop</span>
+      <span class="text-xs text-[#ab7358]">Miembro desde 2024</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Los debates de cada semana me han hecho amar de nuevo el hábito de leer sin prisas."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Jill Felty</span>
+      <span class="text-xs text-[#ab7358]">Lectora activa</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Increíble cómo un libro de Narnia puede abrir conversaciones tan ricas entre lectores de todo el mundo."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Dan Moore</span>
+      <span class="text-xs text-[#ab7358]">Miembro Club</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Tener la guía de lectura y el encuentro semanal le dio orden a mi lectura personal."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Katrina Miller</span>
+      <span class="text-xs text-[#ab7358]">Lectora entusiasta</span>
+    </div>
+  </div>
+
+  <div class="bg-[#270f08] border border-[#4d1c10] rounded-2xl p-6 min-w-[320px] max-w-[380px] shrink-0 flex flex-col justify-between shadow-lg">
+    <p class="text-[#fdf6f0] text-base font-medium italic mb-4">"Una experiencia literaria cercana, profunda y enriquecedora en cada capítulo."</p>
+    <div class="flex items-center justify-between border-t border-[#4d1c10] pt-3">
+      <span class="text-sm font-bold text-[#df9d79]">Syd Martin</span>
+      <span class="text-xs text-[#ab7358]">Miembro Narnia</span>
+    </div>
+  </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS ACCORDION SECTION (#faqs) -->
+  <section id="faqs" class="py-28 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="text-center mb-16">
+      <span class="text-[#e25822] font-bold uppercase tracking-wider text-xs">Respuestas claras</span>
+      <h3 class="text-4xl sm:text-6xl font-black text-white tracking-tight mt-2">Preguntas Frecuentes</h3>
+    </div>
+
+    <!-- Accordion Items -->
+    <div class="space-y-2 mb-16">
+      
+      <div class="faq-item active border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Who is ProjectOne a good fit for?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">ProjectOne was built for founder-led, service-based business<br>            owners who need a professional online presence without the cost,<br>            complexity, or timeline of a traditional agency. If you run your<br>            business, deliver your own service, and need a website that works<br>            hard without requiring constant attention, this was made for you.<br>            ProjectOne is a great fit for professional services; trades and home<br>            services; health, wellness and fitness businesses; creative and<br>            studio professionals; real estate and finance professionals; legal<br>            and professional advisors; marketing, content and digital<br>            professionals; and local and community businesses. If you are a<br>            solopreneur or a small team of one to five people delivering a<br>            service you are proud of, but your online presence does not yet<br>            reflect the quality of your work, ProjectOne was built for you. One<br>            focused, professionally designed page that tells your story, builds<br>            trust, and turns visitors into enquiries. No bloat. No guesswork.<br>            Just results.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Why do you build on Framer and not WordPress, Squarespace, or
+          Webflow?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">Great question, and one worth answering properly because the<br>            platform we build on directly affects how fast your site loads, how<br>            good it looks, how easy it is to update, and how long it stays<br>            relevant. We build every ProjectOne site on Framer. Most website<br>            platforms were built for content management first and design second.<br>            Framer flips that. It was built by designers, for designers—which<br>            means the output looks and feels like a professionally crafted<br>            product, not a template with a logo dropped in. When your site needs<br>            to make a strong first impression in under three seconds, the design<br>            quality of your platform matters enormously. It is fast. Genuinely<br>            fast.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Is this actually custom or just a template?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">Fully custom. We design every site specifically for your<br>            business in Framer. We won’t retrofit a template to fit your unique<br>            business. The only thing consistent across sprints is our process.<br>            Everything else is custom-built for you.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">How long does the process take?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">Your sprint will take around 14 working days from kickoff to<br>            live site. Once you sign up, we’ll book your sprint for a time that<br>            suits, and once kickoff happens, we’ll get to work and you’ll get a<br>            new site.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Do you use AI to build the site?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">We use AI to help draft your website copy, using our proven<br>            StoryBrand storytelling framework. That draft is then edited and<br>            refined by our senior copywriter to make sure it sounds like you and<br>            meets your goals. The design is 100% human-made, custom, strategic,<br>            and built for your brand. While we use smart tools to move faster,<br>            we won’t use them to cut corners.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Do I need a logo before I book?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">A logo isn’t included in the sprint, but you don’t need to<br>            have one sorted to get started. If you already have one, bring it<br>            along. If you don’t, let us know when you book and we’ll point you<br>            in the right direction before your sprint week kicks off.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What if I don’t have photos or content ready?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">You don’t need to prepare anything. We write the copy from<br>            your intake form and kickoff call. For photos, we’ll use your<br>            existing assets, curated stock imagery, or if you&#x27;re local to BC,<br>            Canada, we can discuss a custom photography shoot for real shots of<br>            you and your business.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What happens if I’m on the monthly plan and want to cancel?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">Your site goes offline until payments resume. Or you can buy<br>            out the remaining months at any point and we’ll transfer the site to<br>            you right away.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What does “one round of revisions” mean?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">After we’ve sent you your design and copy, you’ll have 2–3<br>            days to review and send us all of your feedback, all at once. We<br>            action everything in one pass so that we’re not going back and forth<br>            for weeks and delaying your launch.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What’s the guarantee?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">If you’re not happy with the design direction, you get a full<br>            100% refund. No questions, no hard feelings. We’d rather part ways<br>            cleanly than push through something that’s not working.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What’s the hosting situation after 24 months?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">During your two-year contract with us, hosting is covered. At<br>            the end of your plan, we’ll transfer the site to your own Framer<br>            account and help you get set up. It’s easy and takes about five<br>            minutes. Framer hosting runs around $10 USD per month, billed<br>            annually.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">Do I need a Framer account?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">Not to start. We build it in ours. When the sprint wraps or<br>            your 24 months are up, we transfer it over. The whole process is<br>            simple and takes about five minutes.</p>
+        </div>
+      </div>
+    
+
+      <div class="faq-item border-b border-[#4d1c10] py-5 transition-all">
+        <button type="button" class="faq-header flex w-full items-center justify-between text-left group">
+          <span class="text-lg md:text-xl font-semibold text-[#fdf6f0] group-hover:text-[#e25822] transition-colors">What if I need more than one page?</span>
+          <div class="faq-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#32150c] text-[#df9d79] transition-transform duration-300 ml-4 group-hover:bg-[#4d1c10]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+          </div>
+        </button>
+        <div class="faq-answer mt-2 pr-6">
+          <p class="text-[#d7a78e] text-base leading-relaxed pt-2 pb-1 font-normal">ProjectOne is built for businesses that need a clean, focused<br>            single-page site—which is most of us, honestly. If you need a multi-<br>            page build, we do that too. Book a call and we’ll scope it out.</p>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING SECTION (#contact) -->
+  <section id="contact" class="py-28 px-4 max-w-4xl mx-auto scroll-mt-20">
+    <div class="text-center mb-16">
+      <span class="text-[#e25822] font-bold uppercase tracking-wider text-xs">¿Listo para leer juntos?</span>
+      <h3 class="text-3xl sm:text-5xl font-black text-white tracking-tight mt-2 mb-4">
+        Únete a SELAHVITY Book Club
+      </h3>
+      <p class="text-[#d7a78e] text-base max-w-xl mx-auto leading-relaxed">
+        Rellena el formulario para reservar tu lugar en la lectura de <em>El Sobrino del Mago</em> y recibir la guía y accesos.
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="bg-[#270f08] border border-[#4d1c10] rounded-3xl p-8 sm:p-10 shadow-2xl relative">
+      <form id="contact-form" class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#df9d79] mb-2">Tu Nombre</label>
+            <input type="text" required placeholder="Ana García" class="w-full bg-[#32150c] border border-[#4d1c10] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e25822] transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#df9d79] mb-2">Tu Email</label>
+            <input type="email" required placeholder="ana@ejemplo.com" class="w-full bg-[#32150c] border border-[#4d1c10] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e25822] transition-colors">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#df9d79] mb-2">Ciudad o País</label>
+            <input type="text" placeholder="Madrid, España" class="w-full bg-[#32150c] border border-[#4d1c10] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e25822] transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-[#df9d79] mb-2">Tipo de Membresía</label>
+            <select class="w-full bg-[#32150c] border border-[#4d1c10] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e25822] transition-colors">
+              <option value="mensual">Club Mensual ($15/mes)</option>
+              <option value="anual">Pase Anual ($149/año)</option>
+              <option value="dudas">Quiero más información</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-[#df9d79] mb-2">¿Qué te gustaría encontrar en el club?</label>
+          <textarea rows="4" placeholder="Cuéntanos un poco sobre tus autores favoritos o lo que más disfrutas de leer..." class="w-full bg-[#32150c] border border-[#4d1c10] rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-[#e25822] transition-colors"></textarea>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+          <button type="submit" class="btn-primary w-full sm:w-auto px-10 py-4 rounded-xl text-sm font-black uppercase tracking-wider">
+            Confirmar e Inscribirme
+          </button>
+          <div class="flex items-center space-x-2 text-xs text-[#df9d79]">
+            <svg class="w-4 h-4 text-[#e25822]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <span>Lectura actual: El Sobrino del Mago</span>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success Toast / Message -->
+      <div id="form-success" class="hidden absolute inset-0 bg-[#270f08]/95 backdrop-blur-sm rounded-3xl flex flex-col items-center justify-center p-8 text-center">
+        <div class="h-16 w-16 bg-[#e25822]/20 rounded-full flex items-center justify-center text-[#e25822] mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h4 class="text-2xl font-black text-white mb-2">¡Bienvenido a SELAHVITY Book Club!</h4>
+        <p class="text-sm text-[#df9d79] max-w-md">Te hemos enviado el acceso al canal y la guía de lectura de <em>El Sobrino del Mago</em>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[#4d1c10] bg-[#140603] pt-16 pb-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-[#4d1c10]">
+        <!-- Brand Col -->
+        <div>
+          <a href="#" class="flex items-center space-x-3 mb-4">
+            <div class="h-9 w-9 rounded-xl bg-[#36150c] border border-[#5a2215] flex items-center justify-center p-1">
+              <img src="assets/images/selahvity_s.png" alt="S" class="h-7 w-auto object-contain filter brightness-125">
+            </div>
+            <span class="text-xs font-black tracking-widest uppercase text-[#df9d79]">SELAHVITY</span>
+          </a>
+          <p class="text-xs text-[#d7a78e] leading-relaxed mb-4">
+            SELAHVITY Book Club. Comunidad de lectores, pensadores y creadores.
+          </p>
+          <a href="#contact" class="btn-primary px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider">
+            Unirte
+          </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#df9d79] block mb-4">Navegación</span>
+          <ul class="space-y-2.5 text-xs text-[#d7a78e]">
+            <li><a href="#libro-actual" class="hover:text-[#e25822] transition-colors">Lectura del Mes</a></li>
+            <li><a href="#process" class="hover:text-[#e25822] transition-colors">Cómo funciona</a></li>
+            <li><a href="#pricing" class="hover:text-[#e25822] transition-colors">Membresía</a></li>
+            <li><a href="#faqs" class="hover:text-[#e25822] transition-colors">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal & Resources -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#df9d79] block mb-4">Recursos</span>
+          <ul class="space-y-2.5 text-xs text-[#d7a78e]">
+            <li><a href="#" class="hover:text-[#e25822] transition-colors">Política de Privacidad</a></li>
+            <li><a href="#" class="hover:text-[#e25822] transition-colors">Términos del Club</a></li>
+            <li><a href="#libro-actual" class="hover:text-[#e25822] transition-colors">Guías de Lectura</a></li>
+            <li><a href="#contact" class="hover:text-[#e25822] transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#ab7358] gap-4">
+        <div>
+          © 2026 SELAHVITY Book Club. Todos los derechos reservados.
+        </div>
+        <div class="flex items-center space-x-4">
+          <span>Diseñado con pasión por la literatura</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
