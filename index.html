@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SELAHVITY - Book Club</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=7">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=7">
 
   <!-- Preload Critical Brand Assets -->
   <link rel="preload" as="image" href="assets/images/selahvity_hero_logo_v5.png?v=5">
@@ -314,62 +314,104 @@
       padding: 0 12px;
     }
 
-    /* Floating Book Cards */
-    .book-card {
+    /* Floating 3D Books (Borderless, Pure Organic Float) */
+    .floating-books-wrap {
       position: absolute;
+      inset: 0;
+      pointer-events: none;
       z-index: 5;
-      background: var(--card-bg);
-      border: 1.5px solid var(--border-dark);
-      border-radius: 12px;
-      padding: 10px 10px 14px;
-      box-shadow: 4px 4px 0px var(--border-dark);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      width: 195px;
-      cursor: pointer;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
-    }
-    .book-card:hover {
-      transform: scale(1.07) translateY(-6px) !important;
-      box-shadow: 8px 12px 20px rgba(19, 19, 17, 0.15);
-      z-index: 20;
-    }
-    .book-card-cover-wrap {
-      width: 172px;
-      height: 155px;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #E8E6DC;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: inset 0 0 0 1px rgba(19, 19, 17, 0.1);
-    }
-    .book-card-cover {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-    .book-card:hover .book-card-cover {
-      transform: scale(1.05);
-    }
-    .book-card-label {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-main);
-      padding: 0 4px;
     }
 
-    .card-top-left { top: 14%; left: 5%; transform: rotate(-13deg); }
-    .card-top-right { top: 12%; right: 5%; transform: rotate(18deg); }
-    .card-bottom-left { bottom: 8%; left: 7%; transform: rotate(-22deg); }
-    .card-bottom-right { bottom: 10%; right: 5%; transform: rotate(11deg); }
+    .floating-book {
+      position: absolute;
+      pointer-events: auto;
+      cursor: pointer;
+      filter: drop-shadow(0 20px 28px rgba(19, 19, 17, 0.22)) drop-shadow(0 4px 10px rgba(19, 19, 17, 0.12));
+      transition: filter 0.4s ease;
+      will-change: transform;
+    }
+
+    .floating-book:hover {
+      z-index: 25;
+      filter: drop-shadow(0 32px 46px rgba(19, 19, 17, 0.35)) drop-shadow(0 10px 18px rgba(19, 19, 17, 0.2));
+    }
+
+    .floating-book-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .floating-book:hover .floating-book-img {
+      transform: scale(1.08);
+    }
+
+    /* Organic Floating Animations */
+    @keyframes floatBook1 {
+      0%, 100% {
+        transform: translateY(0px) rotate(-7deg);
+      }
+      50% {
+        transform: translateY(-16px) rotate(-4deg);
+      }
+    }
+
+    @keyframes floatBook2 {
+      0%, 100% {
+        transform: translateY(0px) rotate(8deg);
+      }
+      50% {
+        transform: translateY(-18px) rotate(5deg);
+      }
+    }
+
+    @keyframes floatBook3 {
+      0%, 100% {
+        transform: translateY(0px) rotate(-11deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(-7deg);
+      }
+    }
+
+    @keyframes floatBook4 {
+      0%, 100% {
+        transform: translateY(0px) rotate(7deg);
+      }
+      50% {
+        transform: translateY(-17px) rotate(10deg);
+      }
+    }
+
+    .book-pos-top-left {
+      top: 13%;
+      left: 6%;
+      width: 175px;
+      animation: floatBook1 5.4s ease-in-out infinite;
+    }
+
+    .book-pos-top-right {
+      top: 11%;
+      right: 6%;
+      width: 175px;
+      animation: floatBook2 4.9s ease-in-out infinite 0.7s;
+    }
+
+    .book-pos-bottom-left {
+      bottom: 9%;
+      left: 8%;
+      width: 180px;
+      animation: floatBook3 5.8s ease-in-out infinite 0.3s;
+    }
+
+    .book-pos-bottom-right {
+      bottom: 8%;
+      right: 7%;
+      width: 210px;
+      animation: floatBook4 5.2s ease-in-out infinite 1.1s;
+    }
 
     /* ========================================================
        2. CÓMO FUNCIONA (#como-funciona)
@@ -722,13 +764,11 @@
        RESPONSIVE DESIGN
        ======================================================== */
     @media (max-width: 1120px) {
-      .card-top-left { left: 2%; top: 12%; }
-      .card-top-right { right: 2%; top: 10%; }
-      .card-bottom-left { left: 2%; bottom: 8%; }
-      .card-bottom-right { right: 2%; bottom: 8%; }
+      .book-pos-top-left { left: 2%; top: 12%; width: 140px; }
+      .book-pos-top-right { right: 2%; top: 10%; width: 140px; }
+      .book-pos-bottom-left { left: 2%; bottom: 8%; width: 145px; }
+      .book-pos-bottom-right { right: 2%; bottom: 8%; width: 170px; }
       .hero-logo-img { width: 500px; }
-      .book-card { width: 175px; }
-      .book-card-cover-wrap { width: 152px; height: 138px; }
       .books-grid { grid-template-columns: repeat(2, 1fr); }
       .steps-grid { grid-template-columns: repeat(1, 1fr); }
       .bento-grid { grid-template-columns: repeat(1, 1fr); }
@@ -751,22 +791,27 @@
         flex-direction: column;
       }
       .hero-circle-bg { width: 440px; height: 440px; }
-      .book-card {
+      .floating-books-wrap {
         position: static;
-        transform: none !important;
-        width: 100%;
-        max-width: 240px;
-      }
-      .cards-mobile-grid {
+        inset: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 24px;
         margin-top: 48px;
         z-index: 2;
         width: 100%;
-        max-width: 520px;
+        max-width: 460px;
+        padding: 0 16px;
+        pointer-events: auto;
       }
-      .book-card-cover-wrap { width: 100%; height: 160px; }
+      .floating-book {
+        position: static;
+        width: 130px;
+        margin: 0 auto;
+      }
+      .book-pos-bottom-right {
+        width: 155px;
+      }
       .books-grid { grid-template-columns: 1fr; }
       .community-quote { flex-direction: column; align-items: flex-start; }
       .footer { flex-direction: column; gap: 16px; text-align: center; }
@@ -838,34 +883,28 @@
 
     </section>
 
-    <!-- FLOATING BOOK CARDS SURROUNDING THE CIRCLE (Desktop) -->
-    <article class="book-card card-top-left">
-      <div class="book-card-cover-wrap">
-        <img src="assets/images/book_prince_caspian.jpg" alt="El Príncipe Caspian" class="book-card-cover" loading="eager">
+    <!-- 3D FLOATING BOOKS SURROUNDING THE CIRCLE -->
+    <div class="floating-books-wrap">
+      <!-- 1. C.S. Lewis (Top Left) -->
+      <div class="floating-book book-pos-top-left" title="C. S. Lewis">
+        <img src="assets/images/book_floating_cslewis.png" alt="C. S. Lewis" class="floating-book-img" loading="eager">
       </div>
-      <span class="book-card-label">EL PRÍNCIPE CASPIAN</span>
-    </article>
 
-    <article class="book-card card-top-right">
-      <div class="book-card-cover-wrap">
-        <img src="assets/images/book_silver_chair.jpg" alt="La Silla de Plata" class="book-card-cover" loading="eager">
+      <!-- 2. El Príncipe Caspian (Top Right) -->
+      <div class="floating-book book-pos-top-right" title="El Príncipe Caspian">
+        <img src="assets/images/book_floating_caspian.png" alt="El Príncipe Caspian" class="floating-book-img" loading="eager">
       </div>
-      <span class="book-card-label">LA SILLA DE PLATA</span>
-    </article>
 
-    <article class="book-card card-bottom-left">
-      <div class="book-card-cover-wrap">
-        <img src="assets/images/book_dawn_treader.jpg" alt="La Travesía del Viajero del Alba" class="book-card-cover" loading="eager">
+      <!-- 3. El Caballo y el Muchacho (Bottom Left) -->
+      <div class="floating-book book-pos-bottom-left" title="El Caballo y el Muchacho">
+        <img src="assets/images/book_floating_horse.png" alt="El Caballo y el Muchacho" class="floating-book-img" loading="eager">
       </div>
-      <span class="book-card-label">VIAJERO DEL ALBA</span>
-    </article>
 
-    <article class="book-card card-bottom-right">
-      <div class="book-card-cover-wrap">
-        <img src="assets/images/book_magicians_nephew.jpg" alt="El Sobrino del Mago" class="book-card-cover" loading="eager">
+      <!-- 4. El Sobrino del Mago (Bottom Right) -->
+      <div class="floating-book book-pos-bottom-right" title="El Sobrino del Mago">
+        <img src="assets/images/book_floating_magician.png" alt="El Sobrino del Mago" class="floating-book-img" loading="eager">
       </div>
-      <span class="book-card-label">EL SOBRINO DEL MAGO</span>
-    </article>
+    </div>
 
   </main>
 
