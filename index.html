@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SELAHVITY - Book Club</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=7">
-  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=7">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=11">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=11">
 
-  <!-- Preload Critical Brand Assets & Animation Layers -->
+  <!-- Preload Critical Brand Assets, Velvet Background & Animation Layers -->
+  <link rel="preload" as="image" href="assets/images/bg_red_velvet.webp?v=11">
+  <link rel="preload" as="image" href="assets/images/selahvity_isotipo_white.png?v=11">
   <link rel="preload" as="image" href="assets/images/animation/hand_top.png">
   <link rel="preload" as="image" href="assets/images/animation/hand_bottom.png">
   <link rel="preload" as="image" href="assets/images/animation/text_selahvity.png">
   <link rel="preload" as="image" href="assets/images/animation/text_book_club.png">
-  <link rel="preload" as="image" href="assets/images/selahvity_nav_logo_white.png?v=5">
 
   <!-- Satoshi Font -->
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,800,700,500,400&display=swap" rel="stylesheet">
@@ -29,22 +30,27 @@
     }
 
     :root {
-      --bg: #F5F4EE;
-      --bg-alt: #EFECE1;
-      --circle-bg: #EAE8DE;
-      --text-main: #131311;
-      --text-muted: #52524D;
+      --bg: #1B0708;
+      --bg-alt: rgba(30, 10, 12, 0.90);
+      --circle-bg: rgba(226, 88, 34, 0.15);
+      --text-main: #FAF9F5;
+      --text-muted: #D8D4CA;
       --accent: #E25822; /* Rojo naranjoso cálido */
       --accent-hover: #F16934;
-      --border-dark: #131311;
-      --card-bg: #FCFBF7;
-      --dark-section: #131311;
-      --dark-card: #1C1D1A;
-      --dark-border: #2A2A27;
+      --border-dark: rgba(255, 255, 255, 0.18);
+      --card-bg: rgba(38, 14, 17, 0.88);
+      --dark-section: #120405;
+      --dark-card: #1C080A;
+      --dark-border: rgba(255, 255, 255, 0.14);
     }
 
     body {
-      background-color: var(--bg);
+      background-color: #1A0708;
+      background-image: url('assets/images/bg_red_velvet.webp?v=11');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
       color: var(--text-main);
       font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
@@ -78,32 +84,36 @@
       gap: 6px;
       background: var(--text-main);
       border-radius: 14px;
-      padding: 6px 8px 6px 12px;
+      padding: 6px 8px 6px 14px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
       max-width: 96vw;
     }
 
-    /* Brand Logo inside the bar */
-    .nav-brand-inside {
+    /* Independent Brand Logo on the left */
+    .nav-brand-independent {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 2px 12px 2px 2px;
       text-decoration: none;
-      border-right: 1px solid rgba(255, 255, 255, 0.18);
-      margin-right: 4px;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      z-index: 105;
     }
-    .nav-brand-inside:hover {
-      transform: scale(1.08);
+    .nav-brand-independent:hover {
+      transform: translateY(-50%) scale(1.08);
+      opacity: 0.85;
     }
-    .nav-brand-inside-img {
-      height: 44px;
+    .nav-brand-independent-img {
+      height: 46px;
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.4));
+      filter: drop-shadow(0 4px 12px rgba(19, 19, 17, 0.12));
     }
 
     .nav-links-wrap {
@@ -237,7 +247,7 @@
       max-width: 94vw;
       max-height: 94vw;
       border-radius: 50%;
-      background: radial-gradient(circle, var(--circle-bg) 0%, rgba(234, 232, 222, 0.45) 75%, transparent 100%);
+      background: radial-gradient(circle, rgba(245, 180, 80, 0.09) 0%, rgba(226, 88, 34, 0.04) 45%, transparent 75%);
       z-index: 0;
       pointer-events: none;
     }
@@ -263,8 +273,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      mix-blend-mode: multiply;
-      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.24)) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.5));
       cursor: pointer;
       user-select: none;
       transition: transform 0.25s ease;
@@ -933,12 +942,12 @@
        TOP NAVBAR
        ======================================================== -->
   <header class="navbar-container">
-    <nav class="nav-menu" aria-label="Menú principal">
-      <!-- Logo Inside the Bar -->
-      <a href="#" class="nav-brand-inside" aria-label="SELAHVITY">
-        <img src="assets/images/selahvity_nav_logo_white.png?v=5" alt="SELAHVITY" class="nav-brand-inside-img">
-      </a>
+    <!-- Brand Logo Independiente a la Izquierda -->
+    <a href="#" class="nav-brand-independent" aria-label="SELAHVITY">
+      <img src="assets/images/selahvity_isotipo_white.png?v=11" alt="SELAHVITY" class="nav-brand-independent-img">
+    </a>
 
+    <nav class="nav-menu" aria-label="Menú principal">
       <!-- Navigation Links -->
       <div class="nav-links-wrap">
         <a href="#como-funciona" class="nav-link">CÓMO FUNCIONA</a>
@@ -1258,7 +1267,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <a href="#" class="footer-brand">
-      <img src="assets/images/selahvity_nav_logo_white.png?v=5" alt="SELAHVITY" style="height: 36px; width: auto; display: block;">
+      <img src="assets/images/selahvity_isotipo_white.png?v=11" alt="SELAHVITY" style="height: 38px; width: auto; display: block;">
       <span>SELAHVITY BOOK CLUB</span>
     </a>
     <p class="footer-copy">© 2026 Selahvity. Un espacio para leer, conectar y habitar historias en comunidad.</p>
@@ -1318,9 +1327,23 @@
         };
       }
 
+      // ========================================================
+      // COLOR PALETTE CONFIGURATION (100% EDITABLE A CUALQUIER COLOR)
+      // Cambia LOGO_COLOR a cualquier tono deseado (ej: '#FFFFFF' blanco, '#E5A93C' dorado, etc.)
+      // ========================================================
+      let LOGO_COLOR = '#FFFFFF'; // Blanco puro como solicitó el usuario
+      let lastProgress = 0;
+
+      // Función global accesible para cambiar el color al vuelo: window.setLogoColor('#...')
+      window.setLogoColor = function(newHexColor) {
+        LOGO_COLOR = newHexColor;
+        draw(lastProgress);
+      };
+
       let frameId = 0;
 
       function draw(p) {
+        lastProgress = p;
         ctx.clearRect(0, 0, 2000, 2000);
 
         const angle = Math.atan2(752.5, 877.0);
@@ -1419,6 +1442,15 @@
         ctx.translate(-bcx, -bcy);
         ctx.drawImage(imgBot, botRest.x, botRest.y, botRest.w, botRest.h);
         ctx.restore();
+
+        // Tinte de Color Dinámico (Aplica Blanco '#FFFFFF' o cualquier color editable)
+        if (LOGO_COLOR) {
+          ctx.save();
+          ctx.globalCompositeOperation = 'source-in';
+          ctx.fillStyle = LOGO_COLOR;
+          ctx.fillRect(0, 0, 2000, 2000);
+          ctx.restore();
+        }
       }
 
       let animStartTime = null;
