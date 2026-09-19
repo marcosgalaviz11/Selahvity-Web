@@ -51,51 +51,61 @@
     }
 
     /* ========================================================
-       TOP NAVIGATION BAR
+       TOP NAVIGATION BAR (UNIFIED FLOATING PILL WITH LOGO INSIDE)
        ======================================================== */
     .navbar-container {
       position: fixed;
-      top: 0;
+      top: 18px;
       left: 0;
       right: 0;
+      width: 100%;
       z-index: 100;
-      padding: 16px 36px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       pointer-events: none;
-    }
-
-    .navbar-container > * {
-      pointer-events: auto;
-    }
-
-    .nav-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .nav-brand:hover {
-      transform: scale(1.06);
-    }
-    .nav-brand-img {
-      height: 46px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      background: transparent;
+      padding: 0 16px;
     }
 
     .nav-menu {
-      display: flex;
+      pointer-events: auto;
+      margin: 0 auto;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
       background: var(--text-main);
-      border-radius: 12px;
-      padding: 6px 8px 6px 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border-radius: 14px;
+      padding: 6px 8px 6px 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      max-width: 96vw;
+    }
+
+    /* Brand Logo inside the bar */
+    .nav-brand-inside {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 12px 2px 2px;
+      text-decoration: none;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+      margin-right: 4px;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-brand-inside:hover {
+      transform: scale(1.08);
+    }
+    .nav-brand-inside-img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .nav-links-wrap {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .nav-link {
@@ -108,12 +118,14 @@
       padding: 8px 14px;
       border-radius: 6px;
       transition: color 0.15s ease, background 0.15s ease;
+      white-space: nowrap;
     }
     .nav-link:hover {
       color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
     }
 
+    /* Navbar Action Button: UNIRME */
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -128,6 +140,7 @@
       padding: 7px 10px 7px 14px;
       border-radius: 8px;
       margin-left: 6px;
+      white-space: nowrap;
       transition: background 0.15s ease, transform 0.15s ease;
     }
     .nav-cta:hover {
@@ -722,7 +735,15 @@
 
     @media (max-width: 900px) {
       .navbar-container { padding: 14px 20px; }
-      .nav-menu { display: none; }
+      .nav-links-wrap { display: none; }
+      .nav-brand-inside { border-right: none; margin-right: 0; }
+      .nav-menu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 440px;
+        padding: 6px 8px 6px 12px;
+      }
       .hero-stage {
         padding-top: 100px;
         min-height: auto;
@@ -757,15 +778,21 @@
        TOP NAVBAR
        ======================================================== -->
   <header class="navbar-container">
-    <a href="#" class="nav-brand" aria-label="SELAHVITY">
-      <img src="assets/images/selahvity_lamb_logo.png" alt="SELAHVITY" class="nav-brand-img">
-    </a>
-
     <nav class="nav-menu" aria-label="Menú principal">
-      <a href="#como-funciona" class="nav-link">CÓMO FUNCIONA</a>
-      <a href="#libros" class="nav-link">LIBROS DEL MES</a>
-      <a href="#comunidad" class="nav-link">COMUNIDAD</a>
-      <a href="#preguntas" class="nav-link">PREGUNTAS</a>
+      <!-- Logo Inside the Bar -->
+      <a href="#" class="nav-brand-inside" aria-label="SELAHVITY">
+        <img src="assets/images/selahvity_white_lamb_logo.png" alt="SELAHVITY" class="nav-brand-inside-img">
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="nav-links-wrap">
+        <a href="#como-funciona" class="nav-link">CÓMO FUNCIONA</a>
+        <a href="#libros" class="nav-link">LIBROS DEL MES</a>
+        <a href="#comunidad" class="nav-link">COMUNIDAD</a>
+        <a href="#preguntas" class="nav-link">PREGUNTAS</a>
+      </div>
+
+      <!-- Action Button -->
       <a href="#unirme" class="nav-cta">
         <span>UNIRME</span>
         <span class="nav-cta-arrow">→</span>
