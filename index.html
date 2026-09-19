@@ -7,8 +7,9 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=11">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=11">
 
-  <!-- Preload Critical Brand Assets, Velvet Background & Animation Layers -->
+  <!-- Preload Critical Brand Assets, Velvet Backgrounds & Animation Layers -->
   <link rel="preload" as="image" href="assets/images/bg_red_velvet.webp?v=11">
+  <link rel="preload" as="image" href="assets/images/bg_red_velvet_framed_vertical.webp?v=12">
   <link rel="preload" as="image" href="assets/images/selahvity_isotipo_white.png?v=11">
   <link rel="preload" as="image" href="assets/images/animation/hand_top.png">
   <link rel="preload" as="image" href="assets/images/animation/hand_bottom.png">
@@ -891,48 +892,156 @@
     }
 
     @media (max-width: 900px) {
-      .navbar-container { padding: 14px 20px; }
-      .nav-links-wrap { display: none; }
-      .nav-brand-inside { border-right: none; margin-right: 0; }
+      body {
+        background-image: url('assets/images/bg_red_velvet_framed_vertical.webp?v=12');
+        background-size: cover;
+        background-position: center top;
+        background-attachment: scroll;
+      }
+
+      .navbar-container {
+        padding: 14px 18px;
+        justify-content: flex-end;
+      }
+      .nav-brand-independent {
+        left: 18px;
+      }
+      .nav-brand-independent-img {
+        height: 38px;
+      }
+      .nav-links-wrap {
+        display: none;
+      }
       .nav-menu {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 440px;
-        padding: 6px 8px 6px 12px;
+        display: inline-flex;
+        padding: 4px 6px;
+        background: rgba(19, 19, 17, 0.78);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+        margin: 0;
       }
+      .nav-cta {
+        padding: 6px 14px;
+        font-size: 11px;
+      }
+
+      /* Hero Stage on Mobile: Preserves exact orbital arrangement */
       .hero-stage {
-        padding-top: 100px;
-        min-height: auto;
-        flex-direction: column;
+        padding-top: 65px;
+        padding-bottom: 20px;
+        min-height: 100vh;
+        min-height: 100svh;
+        height: 100svh;
+        max-height: 880px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
       }
-      .hero-circle-bg { width: 440px; height: 440px; }
-      .hero-logo-wrapper { width: 360px; max-width: 90vw; margin: -10px auto 0; }
-      .book-burst-wrap { animation: none !important; transform: none !important; opacity: 1 !important; }
+      .hero-circle-bg {
+        width: 320px;
+        height: 320px;
+      }
+      .hero-center {
+        max-width: 300px;
+      }
+      .hero-logo-wrapper {
+        width: min(250px, 68vw);
+        aspect-ratio: 1 / 1;
+        margin: -25px auto -15px;
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.25)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
+      }
+      .hero-btn {
+        padding: 8px 18px;
+        font-size: 12px;
+        margin: 2px 0 0;
+      }
+
+      /* Keep 6 Books in Orbital Layout on Phone */
       .floating-books-wrap {
-        position: static;
-        inset: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        margin-top: 48px;
-        z-index: 2;
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+        display: block;
         width: 100%;
-        max-width: 460px;
-        padding: 0 16px;
-        pointer-events: auto;
+        max-width: 100%;
+        margin-top: 0;
+        padding: 0;
       }
       .floating-book {
-        position: static;
-        width: 130px;
-        margin: 0 auto;
+        position: absolute;
+        pointer-events: auto;
+        filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.35));
       }
-      .book-pos-bottom-right {
-        width: 155px;
+
+      .book-pos-1 { top: 12%; left: calc(50% - 175px); width: clamp(84px, 24vw, 104px); }
+      .book-pos-2 { top: 10%; left: calc(50% + 72px); width: clamp(86px, 25vw, 108px); }
+      .book-pos-3 { top: 46%; left: calc(50% - 180px); width: clamp(90px, 26vw, 112px); }
+      .book-pos-4 { top: 44%; left: calc(50% + 74px); width: clamp(94px, 27vw, 116px); }
+      .book-pos-5 { bottom: -28px; left: calc(50% - 105px); width: clamp(82px, 23vw, 102px); }
+      .book-pos-6 { bottom: -32px; left: calc(50% + 15px); width: clamp(86px, 24vw, 106px); }
+
+      /* Mobile burst entrance animations */
+      @keyframes burstBook1Mobile {
+        0% { transform: translate(130px, 110px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(-6px, -4px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
       }
+      @keyframes burstBook2Mobile {
+        0% { transform: translate(-130px, 110px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(6px, -4px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
+      }
+      @keyframes burstBook3Mobile {
+        0% { transform: translate(140px, 0px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(-6px, 0px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
+      }
+      @keyframes burstBook4Mobile {
+        0% { transform: translate(-140px, 0px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(6px, 0px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
+      }
+      @keyframes burstBook5Mobile {
+        0% { transform: translate(65px, -120px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(-4px, 4px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
+      }
+      @keyframes burstBook6Mobile {
+        0% { transform: translate(-65px, -120px) scale(0.12); opacity: 0; }
+        20% { opacity: 1; }
+        72% { transform: translate(4px, 4px) scale(1.05); }
+        100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
+      }
+
+      .book-burst-1 { animation: burstBook1Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+      .book-burst-2 { animation: burstBook2Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+      .book-burst-3 { animation: burstBook3Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.10s both; }
+      .book-burst-4 { animation: burstBook4Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+      .book-burst-5 { animation: burstBook5Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both; }
+      .book-burst-6 { animation: burstBook6Mobile 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+
       .books-grid { grid-template-columns: 1fr; }
       .community-quote { flex-direction: column; align-items: flex-start; }
       .footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 375px) {
+      .hero-logo-wrapper { width: 220px; }
+      .book-pos-1 { left: calc(50% - 150px); width: 78px; }
+      .book-pos-2 { left: calc(50% + 64px); width: 80px; }
+      .book-pos-3 { left: calc(50% - 155px); width: 84px; }
+      .book-pos-4 { left: calc(50% + 66px); width: 86px; }
+      .book-pos-5 { bottom: -24px; left: calc(50% - 90px); width: 76px; }
+      .book-pos-6 { bottom: -28px; left: calc(50% + 12px); width: 78px; }
     }
   </style>
 </head>
