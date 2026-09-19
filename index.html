@@ -96,21 +96,27 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ET0HHT1ZZB"></script>
 
 <style id="selahvity-master-style">
-  /* === SELAHVITY INVIOLABLE CSS RULES === */
+  /* ==========================================================
+     SELAHVITY BOOK CLUB - DEFINITIVE BRANDING & LAYOUT RULES
+     ========================================================== */
   
-  /* Force all appear elements to be visible */
+  /* 1. Ensure all elements render without Framer opacity blockers */
   [style*="opacity:0.001"], [style*="opacity: 0.001"], [data-framer-appear-id], .framer-1gf4hqb-container {
     opacity: 1 !important;
     visibility: visible !important;
   }
 
-  /* 1. Nav Logo: replace Project One logo with Selahvity Lamb */
-  [data-framer-name="Nav Logo"], a[href="./"] {
+  /* 2. TOP NAVBAR LOGO: Lamb enclosed in hands forming S (Large, 100% transparent, no background) */
+  [data-framer-name="Nav Logo"], a[href="./"], a.framer-yq1elb {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    min-width: 120px !important;
-    height: 42px !important;
+    width: auto !important;
+    min-width: 52px !important;
+    height: 48px !important;
+    background: transparent !important;
+    position: relative !important;
+    text-decoration: none !important;
   }
   [data-framer-name="Nav Logo"] *, a[href="./"] * {
     display: none !important;
@@ -118,42 +124,92 @@
   [data-framer-name="Nav Logo"]::before, a[href="./"]::before {
     content: "" !important;
     display: block !important;
-    width: 120px !important;
-    height: 38px !important;
+    width: 44px !important;
+    height: 48px !important;
     background-image: url("assets/images/selahvity_lamb_logo.png") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    background-position: left center !important;
-    mix-blend-mode: multiply !important;
+    background-position: center !important;
+    background-color: transparent !important;
+    transition: transform 0.2s ease !important;
+  }
+  [data-framer-name="Nav Logo"]:hover::before, a[href="./"]:hover::before {
+    transform: scale(1.1) !important;
   }
 
-  /* 2. Hero Title: Replace Your Website, Handled with SELAHVITY Hands Artwork */
-  [data-framer-name="Hero Heading Con"],
-  [data-framer-name="Hero Heading Wrap"],
+  /* 3. NAVBAR MENU ITEMS: Customized for Selahvity Book Club */
+  a[href*="#process"] p { font-size: 0 !important; }
+  a[href*="#process"] p::after { content: "CÓMO FUNCIONA" !important; font-size: 12px !important; letter-spacing: 0.05em !important; font-weight: 700 !important; }
+
+  a[href*="#pricing"] p { font-size: 0 !important; }
+  a[href*="#pricing"] p::after { content: "LIBROS DEL MES" !important; font-size: 12px !important; letter-spacing: 0.05em !important; font-weight: 700 !important; }
+
+  a[href*="#why-us"] p { font-size: 0 !important; }
+  a[href*="#why-us"] p::after { content: "COMUNIDAD" !important; font-size: 12px !important; letter-spacing: 0.05em !important; font-weight: 700 !important; }
+
+  a[href*="#faqs"] p { font-size: 0 !important; }
+  a[href*="#faqs"] p::after { content: "PREGUNTAS" !important; font-size: 12px !important; letter-spacing: 0.05em !important; font-weight: 700 !important; }
+
+  /* Navbar Action Button: UNIRME */
+  .framer-1gf4hqb-container [data-framer-name="Button Label"] p,
+  .framer-1gf4hqb-container [data-framer-name="Join Waitlist Button"] p { font-size: 0 !important; }
+  .framer-1gf4hqb-container [data-framer-name="Button Label"] p::after,
+  .framer-1gf4hqb-container [data-framer-name="Join Waitlist Button"] p::after {
+    content: "UNIRME" !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.06em !important;
+    color: #131311 !important;
+    text-transform: uppercase !important;
+  }
+
+  /* 4. HERO SECTION: Center Structure */
   .framer-wn4a {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: center !important;
+    gap: 18px !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
     opacity: 1 !important;
     visibility: visible !important;
-    gap: 16px !important;
   }
-  [data-framer-name="Hero Eyebrow"],
+
+  /* Hide badge above the logo (Framer Badge / Checkmark pill) */
   .framer-yn6lvx,
-  [data-framer-name="Framer Badge"] {
+  [data-framer-name="Framer Badge"],
+  [data-framer-name="Hero Eyebrow"],
+  .framer-5l5grw,
+  .framer-1ld7p2n {
     display: none !important;
   }
-  [data-framer-name="Hero Heading"],
-  .framer-1i2jpry {
+
+  /* HERO LOGO: Big centered SELAHVITY BOOK CLUB hands artwork */
+  .framer-1uif1nj,
+  [data-framer-name="Hero Heading Con"] {
+    order: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
     opacity: 1 !important;
     visibility: visible !important;
+    gap: 0 !important;
+  }
+
+  [data-framer-name="Hero Heading"],
+  .framer-1i2jpry {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    max-width: 520px !important;
+    max-width: 660px !important;
     margin: 0 auto !important;
-    order: 1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   [data-framer-name="Hero Heading"] *,
   .framer-1i2jpry * {
@@ -163,21 +219,26 @@
   .framer-1i2jpry::before {
     content: "" !important;
     display: block !important;
-    width: 500px !important;
+    width: 620px !important;
     max-width: 90vw !important;
-    height: 190px !important;
+    height: 280px !important;
     background-image: url("assets/images/selahvity_bookclub_hands.png") !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
+    background-color: transparent !important;
     mix-blend-mode: multiply !important;
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12)) !important;
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12)) !important;
   }
 
-  /* 3. Hero Button: Order directly under the title, replace text with UNIRME */
+  /* 5. HERO BUTTON: Directly below the hands logo */
   .framer-ujfy3e {
     order: 2 !important;
-    margin: 8px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin: 4px 0 0 0 !important;
     opacity: 1 !important;
     visibility: visible !important;
   }
@@ -202,121 +263,142 @@
     font-family: "Satoshi", -apple-system, sans-serif !important;
   }
 
-  /* 4. Hero Description: Order directly below the UNIRME button */
-  [data-framer-name="Hero Description"],
-  .framer-1uif1nj:has([data-framer-name="Hero Description"]) {
-    order: 3 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    width: 100% !important;
-    max-width: 580px !important;
-    margin: 10px auto 0 !important;
-    text-align: center !important;
-  }
-  [data-framer-name="Hero Description"] * {
+  /* Hide Money-Back Guarantee icon & text */
+  .framer-1io53l2,
+  .framer-cne608,
+  [data-framer-name="Money Back Guarantee"] {
     display: none !important;
   }
-  [data-framer-name="Hero Description"]::before {
+
+  /* 6. HERO DESCRIPTION: Directly below the UNIRME button */
+  .framer-ujfy3e::after {
     content: "Selahvity Book Club es un espacio para leer, conectar y habitar grandes historias clásicas y de fantasía en comunidad. Un punto de encuentro para compartir lecturas que inspiran y transforman." !important;
     display: block !important;
     font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-    font-size: 1.15rem !important;
+    font-size: 1.12rem !important;
     line-height: 1.65 !important;
     color: #272724 !important;
     text-align: center !important;
+    max-width: 580px !important;
+    margin: 4px auto 0 !important;
     font-weight: 500 !important;
+    padding: 0 16px !important;
   }
 
-  /* 5. Completely remove Problem Section ("Sound Familiar? Never-Ending Check List") */
+  /* Hide original description inside Hero Heading Con */
+  [data-framer-name="Hero Description"],
+  .framer-4h1ee8 {
+    display: none !important;
+  }
+
+  /* 7. COMPLETELY REMOVE PROBLEM SECTION (Sound Familiar? Checklist) */
   [data-framer-name="Problem Section"],
   .framer-1ug5gt4:has([data-framer-name="Problem Section"]),
   .framer-16ofynd {
     display: none !important;
   }
 
-  /* 6. Floating Cards: Replace laptop images with 3D Books of Narnia */
-  [data-framer-name="Winston Moore"] div[style*="background"],
-  .framer-1srygbd div[style*="background"],
-  .framer-1i8k4mq div[style*="background"] {
-    background-image: url("assets/images/book_prince_caspian.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    box-shadow: -8px 12px 20px rgba(0,0,0,0.35) !important;
-    border-radius: 4px !important;
-  }
-  [data-framer-name="Winston Moore"] p,
-  .framer-17dgsct p {
-    font-size: 0 !important;
-  }
-  [data-framer-name="Winston Moore"] p::after,
-  .framer-17dgsct p::after {
-    content: "PRINCE CASPIAN" !important;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
-    color: #131311 !important;
+  /* 8. FLOATING HERO CARDS: Tapas de los libros de Narnia */
+  /* Hide the old laptop images inside cards */
+  .framer-1cqlfx3 [data-framer-background-image-wrapper] img,
+  .framer-c6xmd [data-framer-background-image-wrapper] img,
+  .framer-ig33ua [data-framer-background-image-wrapper] img,
+  .framer-1ibqkeo [data-framer-background-image-wrapper] img,
+  .framer-118hqk1 [data-framer-background-image-wrapper] img {
+    display: none !important;
+    opacity: 0 !important;
   }
 
-  [data-framer-name="Golden Hour"] div[style*="background"],
-  .framer-1brk2fy div[style*="background"],
-  .framer-17p74tj div[style*="background"] {
-    background-image: url("assets/images/book_silver_chair.jpg") !important;
+  /* Card base styling for book covers */
+  .framer-1cqlfx3,
+  .framer-c6xmd,
+  .framer-ig33ua,
+  .framer-1ibqkeo,
+  .framer-118hqk1 {
     background-size: cover !important;
     background-position: center !important;
-    box-shadow: -8px 12px 20px rgba(0,0,0,0.35) !important;
-    border-radius: 4px !important;
+    background-repeat: no-repeat !important;
+    border-radius: 6px !important;
+    box-shadow: -8px 12px 24px rgba(0, 0, 0, 0.35) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
   }
-  [data-framer-name="Golden Hour"] p,
-  .framer-1hhxetq p {
-    font-size: 0 !important;
-  }
-  [data-framer-name="Golden Hour"] p::after,
-  .framer-1hhxetq p::after {
-    content: "THE SILVER CHAIR" !important;
-    font-size: 11px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
-    color: #131311 !important;
+  .framer-uh1tn5:hover,
+  .framer-36exs6:hover,
+  .framer-17p74tj:hover,
+  .framer-19mwhq4:hover,
+  .framer-1i8k4mq:hover {
+    transform: translateY(-8px) scale(1.04) !important;
   }
 
-  [data-framer-name="Afternoon Adventures"] div[style*="background"],
-  .framer-ouyte0 div[style*="background"],
-  .framer-uh1tn5 div[style*="background"] {
+  /* Card 1: Bottom Left -> La Travesía del Viajero del Alba */
+  .framer-1cqlfx3, [data-framer-name="Afternoon Adventures"] {
     background-image: url("assets/images/book_dawn_treader.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    box-shadow: -8px 12px 20px rgba(0,0,0,0.35) !important;
-    border-radius: 4px !important;
   }
-  [data-framer-name="Afternoon Adventures"] p,
-  .framer-zssmw9 p {
+  .framer-uh1tn5 p, [data-framer-name="Afternoon Adventures"] p, .framer-zssmw9 p {
     font-size: 0 !important;
   }
-  [data-framer-name="Afternoon Adventures"] p::after,
-  .framer-zssmw9 p::after {
-    content: "THE VOYAGE OF THE DAWN TREADER" !important;
+  .framer-uh1tn5 p::after, [data-framer-name="Afternoon Adventures"] p::after, .framer-zssmw9 p::after {
+    content: "VIAJERO DEL ALBA" !important;
     font-size: 11px !important;
     font-weight: 800 !important;
     letter-spacing: 0.05em !important;
     color: #131311 !important;
   }
 
-  [data-framer-name="Clover Coach"] div[style*="background"],
-  .framer-nh34p4 div[style*="background"],
-  .framer-36exs6 div[style*="background"] {
+  /* Card 2: Bottom Right -> El Sobrino del Mago */
+  .framer-c6xmd, [data-framer-name="Clover Coach"] {
     background-image: url("assets/images/book_magicians_nephew.jpg") !important;
-    background-size: cover !important;
-    background-position: center !important;
-    box-shadow: -8px 12px 20px rgba(0,0,0,0.35) !important;
-    border-radius: 4px !important;
   }
-  [data-framer-name="Clover Coach"] p,
-  .framer-1byl22y p {
+  .framer-36exs6 p, [data-framer-name="Clover Coach"] p, .framer-1byl22y p {
     font-size: 0 !important;
   }
-  [data-framer-name="Clover Coach"] p::after,
-  .framer-1byl22y p::after {
-    content: "THE MAGICIAN"S NEPHEW" !important;
+  .framer-36exs6 p::after, [data-framer-name="Clover Coach"] p::after, .framer-1byl22y p::after {
+    content: "EL SOBRINO DEL MAGO" !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #131311 !important;
+  }
+
+  /* Card 3: Top Right -> La Silla de Plata */
+  .framer-ig33ua, [data-framer-name="Golden Hour"] {
+    background-image: url("assets/images/book_silver_chair.jpg") !important;
+  }
+  .framer-17p74tj p, [data-framer-name="Golden Hour"] p, .framer-1hhxetq p {
+    font-size: 0 !important;
+  }
+  .framer-17p74tj p::after, [data-framer-name="Golden Hour"] p::after, .framer-1hhxetq p::after {
+    content: "LA SILLA DE PLATA" !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #131311 !important;
+  }
+
+  /* Card 4: Top Left -> El Príncipe Caspian */
+  .framer-118hqk1, [data-framer-name="Winston Moore"] {
+    background-image: url("assets/images/book_prince_caspian.jpg") !important;
+  }
+  .framer-1i8k4mq p, [data-framer-name="Winston Moore"] p, .framer-17dgsct p {
+    font-size: 0 !important;
+  }
+  .framer-1i8k4mq p::after, [data-framer-name="Winston Moore"] p::after, .framer-17dgsct p::after {
+    content: "PRÍNCIPE CASPIAN" !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.05em !important;
+    color: #131311 !important;
+  }
+
+  /* Card 5: Top Center -> El Sobrino del Mago */
+  .framer-1ibqkeo, [data-framer-name="Arx Crates"] {
+    background-image: url("assets/images/el_sobrino_del_mago.jpg") !important;
+  }
+  .framer-19mwhq4 p, [data-framer-name="Arx Crates"] p, .framer-1wxm155 p {
+    font-size: 0 !important;
+  }
+  .framer-19mwhq4 p::after, [data-framer-name="Arx Crates"] p::after, .framer-1wxm155 p::after {
+    content: "CRÓNICAS DE NARNIA" !important;
     font-size: 11px !important;
     font-weight: 800 !important;
     letter-spacing: 0.05em !important;
@@ -912,23 +994,59 @@
   (function() {
     document.title = "SELAHVITY";
 
-    function applyDOMFixes() {
-      // 1. Remove Problem Section
-      document.querySelectorAll("[data-framer-name="Problem Section"], .framer-16ofynd").forEach(el => el.remove());
+    const navReplacements = [
+      { match: /how it works/i, text: "CÓMO FUNCIONA" },
+      { match: /pricing/i, text: "LIBROS DEL MES" },
+      { match: /why us/i, text: "COMUNIDAD" },
+      { match: /faqs/i, text: "PREGUNTAS" },
+      { match: /reserve spot/i, text: "UNIRME" }
+    ];
 
-      // 2. Fix Nav Logo href and accessibility
-      document.querySelectorAll("[data-framer-name="Nav Logo"], a[href="./"]").forEach(a => {
-        a.setAttribute("aria-label", "SELAHVITY Book Club");
+    const cardCovers = [
+      { selector: ".framer-1cqlfx3", src: "assets/images/book_dawn_treader.jpg", title: "VIAJERO DEL ALBA" },
+      { selector: ".framer-c6xmd", src: "assets/images/book_magicians_nephew.jpg", title: "EL SOBRINO DEL MAGO" },
+      { selector: ".framer-ig33ua", src: "assets/images/book_silver_chair.jpg", title: "LA SILLA DE PLATA" },
+      { selector: ".framer-118hqk1", src: "assets/images/book_prince_caspian.jpg", title: "PRÍNCIPE CASPIAN" },
+      { selector: ".framer-1ibqkeo", src: "assets/images/el_sobrino_del_mago.jpg", title: "CRÓNICAS DE NARNIA" }
+    ];
+
+    function applyEnhancements() {
+      // 1. Remove Problem Section & badge
+      document.querySelectorAll("[data-framer-name=\"Problem Section\"], .framer-16ofynd, .framer-yn6lvx, [data-framer-name=\"Framer Badge\"]").forEach(el => el.remove());
+
+      // 2. Nav links text
+      document.querySelectorAll("nav a p, .framer-1t09e3y a p").forEach(p => {
+        const txt = p.textContent.trim();
+        navReplacements.forEach(r => {
+          if (r.match.test(txt)) {
+            p.textContent = r.text;
+          }
+        });
       });
 
-      // 3. Make sure UNIRME button works
-      document.querySelectorAll(".framer-ujfy3e a, .framer-1nuzk2w a").forEach(btn => {
-        btn.setAttribute("href", "#contact");
+      // 3. Card Book Covers
+      cardCovers.forEach(card => {
+        document.querySelectorAll(card.selector).forEach(container => {
+          container.style.backgroundImage = "url(\"" + card.src + "\")";
+          container.style.backgroundSize = "cover";
+          container.style.backgroundPosition = "center";
+          const img = container.querySelector("img");
+          if (img) {
+            img.src = card.src;
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "6px";
+          }
+        });
+      });
+
+      // 4. Action buttons
+      document.querySelectorAll(".framer-ujfy3e [data-framer-name=\"Button Label\"] p, .framer-1nuzk2w p").forEach(p => {
+        p.textContent = "UNIRME";
       });
     }
 
-    applyDOMFixes();
-    const observer = new MutationObserver(applyDOMFixes);
+    applyEnhancements();
+    const observer = new MutationObserver(applyEnhancements);
     observer.observe(document.documentElement, { childList: true, subtree: true });
   })();
 </script>
