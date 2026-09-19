@@ -83,10 +83,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--text-main);
+      background: #CCEDFF;
       border-radius: 14px;
       padding: 6px 8px 6px 14px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(12px);
       max-width: 96vw;
     }
@@ -94,7 +94,7 @@
     /* Independent Brand Logo on the left */
     .nav-brand-independent {
       position: absolute;
-      left: 36px;
+      left: 60px;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: auto;
@@ -124,7 +124,7 @@
     }
 
     .nav-link {
-      color: #E2E2DF;
+      color: #5B4A42;
       text-decoration: none;
       font-size: 11.5px;
       font-weight: 700;
@@ -136,8 +136,8 @@
       white-space: nowrap;
     }
     .nav-link:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.1);
+      color: #352620;
+      background: rgba(91, 74, 66, 0.12);
     }
 
     /* Navbar Action Button: UNIRME */
@@ -145,8 +145,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent);
-      color: #FFFFFF;
+      background: #5B4A42;
+      color: #CCEDFF;
       text-decoration: none;
       font-size: 12px;
       font-weight: 900;
@@ -159,15 +159,15 @@
       transition: background 0.15s ease, transform 0.15s ease;
     }
     .nav-cta:hover {
-      background: var(--accent-hover);
+      background: #463831;
       transform: translateY(-1px);
     }
     .nav-cta-arrow {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--text-main);
-      color: var(--accent);
+      background: #CCEDFF;
+      color: #5B4A42;
       width: 18px;
       height: 18px;
       border-radius: 4px;
@@ -351,6 +351,52 @@
       fill: none;
     }
 
+    /* Bottom-Right Hero Action Button (Moved as requested in mockup) */
+    .hero-btn-corner {
+      position: absolute;
+      bottom: 42px;
+      right: clamp(24px, 5vw, 64px);
+      z-index: 25;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #CCEDFF;
+      color: #5B4A42;
+      text-decoration: none;
+      font-family: inherit;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: 1.5px solid #5B4A42;
+      border-radius: 12px;
+      box-shadow: 4px 4px 0px #5B4A42;
+      cursor: pointer;
+      transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .hero-btn-corner:hover {
+      background: #BFE8FF;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px #5B4A42;
+    }
+    .hero-btn-corner .hero-btn-corner-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: #5B4A42;
+      border-radius: 6px;
+    }
+    .hero-btn-corner .hero-btn-corner-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: #CCEDFF;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
     .hero-desc {
       font-size: 1.15rem;
       line-height: 1.65;
@@ -430,7 +476,7 @@
 
     @keyframes burstBook2 {
       0% {
-        transform: translate(-330px, 240px) scale(0.12) rotate(15deg);
+        transform: translate(-250px, 240px) scale(0.12) rotate(15deg);
         opacity: 0;
       }
       20% {
@@ -522,7 +568,7 @@
 
     /* Balanced positions tightly framing the centerpiece with breathing room */
     .book-pos-1 { top: 10%; left: calc(50% - 490px); width: 235px; animation: floatBook1 5.2s ease-in-out infinite; }
-    .book-pos-2 { top: 8%; left: calc(50% + 265px); width: 240px; animation: floatBook2 4.8s ease-in-out infinite 0.6s; }
+    .book-pos-2 { top: 9%; left: calc(50% + 185px); width: 240px; animation: floatBook2 4.8s ease-in-out infinite 0.6s; }
     .book-pos-3 { top: 50%; left: calc(50% - 505px); width: 250px; animation: floatBook3 5.6s ease-in-out infinite 0.3s; }
     .book-pos-4 { top: 48%; left: calc(50% + 255px); width: 260px; animation: floatBook4 5.0s ease-in-out infinite 0.9s; }
     .book-pos-5 { bottom: -80px; left: calc(50% - 295px); width: 225px; animation: floatBook5 5.4s ease-in-out infinite 0.4s; }
@@ -915,13 +961,15 @@
       .nav-menu {
         display: inline-flex;
         padding: 4px 6px;
-        background: rgba(19, 19, 17, 0.78);
+        background: #CCEDFF;
         backdrop-filter: blur(12px);
         border-radius: 12px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         margin: 0;
       }
       .nav-cta {
+        background: #5B4A42;
+        color: #CCEDFF;
         padding: 6px 14px;
         font-size: 11px;
       }
@@ -953,10 +1001,20 @@
         margin: -25px auto -15px;
         filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.25)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
       }
-      .hero-btn {
-        padding: 8px 18px;
-        font-size: 12px;
-        margin: 2px 0 0;
+      .hero-btn-corner {
+        bottom: 22px;
+        right: 18px;
+        padding: 9px 18px;
+        font-size: 11.5px;
+        box-shadow: 3px 3px 0px #5B4A42;
+      }
+      .hero-btn-corner .hero-btn-corner-arrow {
+        width: 22px;
+        height: 22px;
+      }
+      .hero-btn-corner .hero-btn-corner-arrow svg {
+        width: 12px;
+        height: 12px;
       }
 
       /* Keep 6 Books in Orbital Layout on Phone */
@@ -978,7 +1036,7 @@
       }
 
       .book-pos-1 { top: 12%; left: calc(50% - 175px); width: clamp(84px, 24vw, 104px); }
-      .book-pos-2 { top: 10%; left: calc(50% + 72px); width: clamp(86px, 25vw, 108px); }
+      .book-pos-2 { top: 10%; left: calc(50% + 50px); width: clamp(86px, 25vw, 108px); }
       .book-pos-3 { top: 46%; left: calc(50% - 180px); width: clamp(90px, 26vw, 112px); }
       .book-pos-4 { top: 44%; left: calc(50% + 74px); width: clamp(94px, 27vw, 116px); }
       .book-pos-5 { bottom: -28px; left: calc(50% - 105px); width: clamp(82px, 23vw, 102px); }
@@ -992,7 +1050,7 @@
         100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
       }
       @keyframes burstBook2Mobile {
-        0% { transform: translate(-130px, 110px) scale(0.12); opacity: 0; }
+        0% { transform: translate(-100px, 110px) scale(0.12); opacity: 0; }
         20% { opacity: 1; }
         72% { transform: translate(6px, -4px) scale(1.05); }
         100% { transform: translate(0px, 0px) scale(1); opacity: 1; }
@@ -1092,17 +1150,6 @@
         </noscript>
       </div>
 
-      <!-- Action Button -->
-      <a href="#unirme" class="hero-btn">
-        <span>UNIRME</span>
-        <span class="hero-btn-arrow">
-          <svg viewBox="0 0 24 24">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </span>
-      </a>
-
     </section>
 
     <!-- 3D FLOATING BOOKS SURROUNDING THE CIRCLE (Burst entrance from center on load, then gentle floating) -->
@@ -1149,6 +1196,17 @@
          </div>
        </div>
     </div>
+ 
+    <!-- Bottom-Right Hero Action Button (Indicated in mockup) -->
+    <a href="#unirme" class="hero-btn-corner">
+      <span>UNIRME</span>
+      <span class="hero-btn-corner-arrow">
+        <svg viewBox="0 0 24 24">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </span>
+    </a>
 
   </main>
 
