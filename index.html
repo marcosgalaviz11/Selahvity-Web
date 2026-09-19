@@ -413,12 +413,55 @@
       animation: floatBook4 5.2s ease-in-out infinite 1.1s;
     }
 
+    /* Bookshelf Section Divider */
+    .bookshelf-divider-wrap {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg);
+      line-height: 0;
+      z-index: 8;
+    }
+
+    .bookshelf-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeBooks 40s linear infinite;
+      will-change: transform;
+    }
+    .bookshelf-track:hover {
+      animation-play-state: paused;
+    }
+
+    .bookshelf-img {
+      height: 95px;
+      width: auto;
+      flex-shrink: 0;
+      display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .bookshelf-line {
+      width: 100%;
+      height: 2.5px;
+      background: var(--border-dark);
+    }
+
+    @keyframes marqueeBooks {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
     /* ========================================================
        2. CÓMO FUNCIONA (#como-funciona)
        ======================================================== */
     .how-section {
       background: #EFECE1;
-      border-top: 1.5px solid var(--border-dark);
       border-bottom: 1.5px solid var(--border-dark);
     }
 
@@ -907,6 +950,21 @@
     </div>
 
   </main>
+
+  <!-- ========================================================
+       BOOKSHELF SECTION DIVIDER
+       ======================================================== -->
+  <div class="bookshelf-divider-wrap" aria-hidden="true">
+    <div class="bookshelf-track">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+      <img src="assets/images/bookshelf_divider.png" alt="" class="bookshelf-img">
+    </div>
+    <div class="bookshelf-line"></div>
+  </div>
 
   <!-- ========================================================
        2. CÓMO FUNCIONA (#como-funciona)
