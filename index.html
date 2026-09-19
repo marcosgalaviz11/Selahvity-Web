@@ -91,6 +91,10 @@
       max-width: 96vw;
     }
 
+    .nav-hamburger {
+      display: none;
+    }
+
     /* Independent Brand Logo on the left */
     .nav-brand-independent {
       position: absolute;
@@ -945,36 +949,143 @@
 
       .navbar-container {
         position: absolute;
-        top: 4.8svh;
-        left: 11vw;
-        width: auto;
-        padding: 0;
-        margin: 0;
-        justify-content: flex-start;
-        z-index: 50;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
         pointer-events: none;
       }
       .nav-brand-independent {
-        position: static;
-        transform: rotate(-15deg);
-        display: block;
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translateX(-50%);
         pointer-events: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 105;
       }
       .nav-brand-independent:hover {
-        transform: rotate(-15deg) scale(1.08);
+        transform: translateX(-50%) scale(1.08);
       }
       .nav-brand-independent-img {
-        width: 34px;
+        width: 38px;
         height: auto;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
       }
+
+      /* Mobile Hamburger Block Button */
+      .nav-hamburger {
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        width: 42px;
+        height: 42px;
+        background: #CCEDFF;
+        border: 1.5px solid #5B4A42;
+        border-radius: 10px;
+        box-shadow: 2.5px 2.5px 0px #5B4A42;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4.5px;
+        cursor: pointer;
+        pointer-events: auto;
+        z-index: 110;
+        transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+        padding: 0;
+      }
+      .nav-hamburger:hover, .nav-hamburger:active {
+        background: #BFE8FF;
+        transform: translate(-1px, -1px);
+        box-shadow: 3.5px 3.5px 0px #5B4A42;
+      }
+      .nav-hamburger .hamburger-bar {
+        display: block;
+        width: 20px;
+        height: 2.5px;
+        background: #5B4A42;
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+      .nav-hamburger.is-active .hamburger-bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-hamburger.is-active .hamburger-bar:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-hamburger.is-active .hamburger-bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile Nav Menu Drawer */
       .nav-menu {
-        display: none !important;
+        display: none;
+        pointer-events: auto;
+      }
+      .nav-menu.is-open {
+        display: flex !important;
+        position: fixed;
+        top: 66px;
+        right: 16px;
+        left: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        background: #EFECE1;
+        border: 2px solid #5B4A42;
+        border-radius: 14px;
+        padding: 18px 16px;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 4px 4px 0px #5B4A42;
+        z-index: 1000;
+        animation: mobileMenuIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+      @keyframes mobileMenuIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .nav-menu.is-open .nav-links-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+      }
+      .nav-menu.is-open .nav-link {
+        font-size: 13px;
+        font-weight: 800;
+        color: #5B4A42;
+        text-align: center;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: rgba(91, 74, 66, 0.06);
+        border: 1px solid rgba(91, 74, 66, 0.12);
+        letter-spacing: 0.06em;
+      }
+      .nav-menu.is-open .nav-link:hover {
+        background: #CCEDFF;
+        color: #110e0c;
+      }
+      .nav-menu.is-open .nav-cta {
+        margin-left: 0;
+        margin-top: 4px;
+        justify-content: center;
+        padding: 11px 20px;
+        font-size: 13px;
+        font-weight: 900;
+        border-radius: 8px;
+        background: #5B4A42;
+        color: #CCEDFF;
       }
 
       /* Hero Stage on Mobile: Uses the exact user background frame and dimensions */
       .hero-stage {
-        background-image: url('assets/images/bg_mobile_exact.png?v=26');
+        background-image: url('assets/images/bg_mobile_exact.png?v=27');
         background-size: 100% 100%;
         background-position: center center;
         background-repeat: no-repeat;
@@ -1011,7 +1122,7 @@
         filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.22)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
       }
 
-      /* Centered UNIRME Button at bottom exactly as in mockup */
+      /* Centered UNIRME Button on Mobile - Exact match to Desktop version */
       .hero-btn-corner {
         position: absolute;
         top: 79%;
@@ -1019,28 +1130,47 @@
         left: 50%;
         right: auto;
         transform: translateX(-50%);
-        padding: 9px 38px;
-        font-family: var(--font-display);
-        font-size: 14px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        background: #CCEDFF;
-        color: #110e0c;
-        border: none;
-        border-radius: 9999px;
-        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
         display: inline-flex;
         align-items: center;
-        justify-content: center;
+        gap: 12px;
+        background: #CCEDFF;
+        color: #5B4A42;
+        text-decoration: none;
+        font-family: inherit;
+        font-weight: 900;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 12px 24px;
+        border: 1.5px solid #5B4A42;
+        border-radius: 12px;
+        box-shadow: 4px 4px 0px #5B4A42;
+        cursor: pointer;
         z-index: 30;
         white-space: nowrap;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background 0.15s ease;
       }
       .hero-btn-corner:hover {
-        transform: translateX(-50%) translateY(-2px);
         background: #BFE8FF;
+        transform: translateX(-50%) translate(-2px, -2px);
+        box-shadow: 6px 6px 0px #5B4A42;
       }
       .hero-btn-corner .hero-btn-corner-arrow {
-        display: none !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: #5B4A42;
+        border-radius: 6px;
+      }
+      .hero-btn-corner .hero-btn-corner-arrow svg {
+        width: 14px;
+        height: 14px;
+        stroke: #CCEDFF;
+        stroke-width: 2.5;
+        fill: none;
+        display: block;
       }
 
       /* 6 Books in Exact Arrangement from Mockup */
@@ -1182,7 +1312,7 @@
     }
 
     @media (max-width: 375px) {
-      .hero-btn-corner { top: 80%; font-size: 13px; padding: 9px 32px; }
+      .hero-btn-corner { top: 80%; font-size: 13px; padding: 10px 18px; }
     }
   </style>
 </head>
@@ -1192,12 +1322,19 @@
        TOP NAVBAR
        ======================================================== -->
   <header class="navbar-container">
-    <!-- Brand Logo Independiente a la Izquierda -->
+    <!-- Brand Logo Independiente -->
     <a href="#" class="nav-brand-independent" aria-label="SELAHVITY">
       <img src="assets/images/selahvity_isotipo_white.png?v=11" alt="SELAHVITY" class="nav-brand-independent-img">
     </a>
 
-    <nav class="nav-menu" aria-label="Menú principal">
+    <!-- Mobile Hamburger Block Button -->
+    <button class="nav-hamburger" id="navHamburgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <nav class="nav-menu" id="navMenu" aria-label="Menú principal">
       <!-- Navigation Links -->
       <div class="nav-links-wrap">
         <a href="#como-funciona" class="nav-link">CÓMO FUNCIONA</a>
@@ -1736,6 +1873,49 @@
           startAnimation();
         });
       }
+    })();
+  </script>
+
+  <!-- ========================================================
+       MOBILE HAMBURGER MENU CONTROLLER
+       ======================================================== -->
+  <script>
+    (function() {
+      const btn = document.getElementById('navHamburgerBtn');
+      const menu = document.getElementById('navMenu');
+      if (!btn || !menu) return;
+
+      function toggleMenu(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const isOpen = menu.classList.toggle('is-open');
+        btn.classList.toggle('is-active', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      btn.addEventListener('click', toggleMenu);
+
+      menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMenu();
+      });
     })();
   </script>
 
