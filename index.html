@@ -252,8 +252,8 @@
     }
 
     .hero-logo-img {
-      width: 620px;
-      max-width: 90vw;
+      width: 520px;
+      max-width: 86vw;
       height: auto;
       object-fit: contain;
       display: block;
@@ -357,13 +357,13 @@
     @keyframes floatBook5 { 0%, 100% { transform: translateY(0px) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(0deg); } }
     @keyframes floatBook6 { 0%, 100% { transform: translateY(0px) rotate(5deg); } 50% { transform: translateY(-11px) rotate(3deg); } }
 
-    /* Exact positions tightly framing the centerpiece like the reference mockup */
-    .book-pos-1 { top: 9%; left: calc(50% - 530px); width: 290px; animation: floatBook1 5.2s ease-in-out infinite; }
-    .book-pos-2 { top: 7%; left: calc(50% + 240px); width: 295px; animation: floatBook2 4.8s ease-in-out infinite 0.6s; }
-    .book-pos-3 { top: 51%; left: calc(50% - 540px); width: 310px; animation: floatBook3 5.6s ease-in-out infinite 0.3s; }
-    .book-pos-4 { top: 47%; left: calc(50% + 230px); width: 325px; animation: floatBook4 5.0s ease-in-out infinite 0.9s; }
-    .book-pos-5 { bottom: -35px; left: calc(50% - 260px); width: 275px; animation: floatBook5 5.4s ease-in-out infinite 0.4s; }
-    .book-pos-6 { bottom: -45px; left: calc(50% + 55px); width: 295px; animation: floatBook6 5.1s ease-in-out infinite 1.1s; }
+    /* Balanced positions tightly framing the centerpiece with breathing room */
+    .book-pos-1 { top: 10%; left: calc(50% - 490px); width: 235px; animation: floatBook1 5.2s ease-in-out infinite; }
+    .book-pos-2 { top: 8%; left: calc(50% + 265px); width: 240px; animation: floatBook2 4.8s ease-in-out infinite 0.6s; }
+    .book-pos-3 { top: 50%; left: calc(50% - 505px); width: 250px; animation: floatBook3 5.6s ease-in-out infinite 0.3s; }
+    .book-pos-4 { top: 48%; left: calc(50% + 255px); width: 260px; animation: floatBook4 5.0s ease-in-out infinite 0.9s; }
+    .book-pos-5 { bottom: 0px; left: calc(50% - 275px); width: 225px; animation: floatBook5 5.4s ease-in-out infinite 0.4s; }
+    .book-pos-6 { bottom: -10px; left: calc(50% + 55px); width: 235px; animation: floatBook6 5.1s ease-in-out infinite 1.1s; }
 
     /* ========================================================
        2. CÓMO FUNCIONA (#como-funciona)
@@ -716,13 +716,13 @@
        RESPONSIVE DESIGN
        ======================================================== */
     @media (max-width: 1200px) {
-      .book-pos-1 { left: calc(50% - 440px); width: 230px; top: 8%; }
-      .book-pos-2 { left: calc(50% + 190px); width: 235px; top: 7%; }
-      .book-pos-3 { left: calc(50% - 450px); width: 245px; top: 52%; }
-      .book-pos-4 { left: calc(50% + 180px); width: 255px; top: 48%; }
-      .book-pos-5 { left: calc(50% - 220px); width: 220px; bottom: -25px; }
-      .book-pos-6 { left: calc(50% + 40px); width: 235px; bottom: -35px; }
-      .hero-logo-img { width: 500px; }
+      .book-pos-1 { left: calc(50% - 390px); width: 190px; top: 10%; }
+      .book-pos-2 { left: calc(50% + 205px); width: 195px; top: 8%; }
+      .book-pos-3 { left: calc(50% - 400px); width: 200px; top: 52%; }
+      .book-pos-4 { left: calc(50% + 200px); width: 210px; top: 49%; }
+      .book-pos-5 { left: calc(50% - 215px); width: 180px; bottom: 0px; }
+      .book-pos-6 { left: calc(50% + 45px); width: 190px; bottom: -5px; }
+      .hero-logo-img { width: 450px; }
       .books-grid { grid-template-columns: repeat(2, 1fr); }
       .steps-grid { grid-template-columns: repeat(1, 1fr); }
       .bento-grid { grid-template-columns: repeat(1, 1fr); }
@@ -813,7 +813,7 @@
       
       <!-- Linocut Hands Logo Artwork (SELAHVITY LOGO.png) -->
       <img 
-        src="assets/images/selahvity_hero_logo_v6.png?v=7" 
+        src="assets/images/selahvity_hero_logo_v6.png?v=8" 
         alt="SELAHVITY BOOK CLUB" 
         class="hero-logo-img"
         width="1785" height="1327"
@@ -836,32 +836,32 @@
     <div class="floating-books-wrap">
        <!-- 1. Cartas de un diablo a su sobrino (Top-Left) -->
        <div class="floating-book book-pos-1" title="Cartas de un diablo a su sobrino - C. S. Lewis">
-         <img src="assets/images/book_hero_3.png?v=7" alt="Cartas de un diablo a su sobrino" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_3.png?v=8" alt="Cartas de un diablo a su sobrino" class="floating-book-img" loading="eager">
        </div>
 
        <!-- 2. Las Crónicas de Narnia (Top-Right) -->
        <div class="floating-book book-pos-2" title="Las Crónicas de Narnia">
-         <img src="assets/images/book_hero_1.png?v=7" alt="Las Crónicas de Narnia" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_1.png?v=8" alt="Las Crónicas de Narnia" class="floating-book-img" loading="eager">
        </div>
 
        <!-- 3. Los Hermanos Karamázov (Mid-Left) -->
        <div class="floating-book book-pos-3" title="Los Hermanos Karamázov - Fiódor Dostoyevski">
-         <img src="assets/images/book_hero_99.png?v=7" alt="Los Hermanos Karamázov" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_99.png?v=8" alt="Los Hermanos Karamázov" class="floating-book-img" loading="eager">
        </div>
 
        <!-- 4. El Señor de los Anillos (Mid-Right) -->
        <div class="floating-book book-pos-4" title="El Señor de los Anillos - J. R. R. Tolkien">
-         <img src="assets/images/book_hero_4.png?v=7" alt="El Señor de los Anillos" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_4.png?v=8" alt="El Señor de los Anillos" class="floating-book-img" loading="eager">
        </div>
 
        <!-- 5. Más allá del planeta silencioso (Bottom-Left) -->
        <div class="floating-book book-pos-5" title="Más allá del planeta silencioso - C. S. Lewis">
-         <img src="assets/images/book_hero_9.png?v=7" alt="Más allá del planeta silencioso" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_9.png?v=8" alt="Más allá del planeta silencioso" class="floating-book-img" loading="eager">
        </div>
 
        <!-- 6. El Hobbit (Bottom-Right) -->
        <div class="floating-book book-pos-6" title="El Hobbit - J. R. R. Tolkien">
-         <img src="assets/images/book_hero_7.png?v=7" alt="El Hobbit" class="floating-book-img" loading="eager">
+         <img src="assets/images/book_hero_7.png?v=8" alt="El Hobbit" class="floating-book-img" loading="eager">
        </div>
     </div>
 
