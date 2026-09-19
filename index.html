@@ -7,8 +7,11 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png?v=7">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png?v=7">
 
-  <!-- Preload Critical Brand Assets -->
-  <link rel="preload" as="image" href="assets/images/selahvity_hero_logo_v6.png?v=6">
+  <!-- Preload Critical Brand Assets & Animation Layers -->
+  <link rel="preload" as="image" href="assets/images/animation/hand_top.png">
+  <link rel="preload" as="image" href="assets/images/animation/hand_bottom.png">
+  <link rel="preload" as="image" href="assets/images/animation/text_selahvity.png">
+  <link rel="preload" as="image" href="assets/images/animation/text_book_club.png">
   <link rel="preload" as="image" href="assets/images/selahvity_nav_logo_white.png?v=5">
 
   <!-- Satoshi Font -->
@@ -251,15 +254,48 @@
       width: 100%;
     }
 
-    .hero-logo-img {
+    .hero-logo-wrapper {
+      position: relative;
       width: 520px;
       max-width: 86vw;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 16px;
+      aspect-ratio: 1 / 1;
+      margin: -35px auto -30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       mix-blend-mode: multiply;
       filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.08));
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.25s ease;
+      will-change: transform;
+    }
+
+    .hero-logo-canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hero-logo-fallback {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Flotación suave y orgánica una vez que las manos se abren */
+    .hero-logo-wrapper.is-floating {
+      animation: heroLogoGentleFloat 5.6s ease-in-out infinite;
+    }
+
+    @keyframes heroLogoGentleFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-9px) rotate(0.4deg);
+      }
     }
 
     .hero-btn {
@@ -356,6 +392,123 @@
     @keyframes floatBook4 { 0%, 100% { transform: translateY(0px) rotate(6deg); } 50% { transform: translateY(-12px) rotate(8deg); } }
     @keyframes floatBook5 { 0%, 100% { transform: translateY(0px) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(0deg); } }
     @keyframes floatBook6 { 0%, 100% { transform: translateY(0px) rotate(5deg); } 50% { transform: translateY(-11px) rotate(3deg); } }
+
+    /* Animación de entrada: los 6 libros salen disparados desde el centro al cargar la página */
+    .book-burst-wrap {
+      width: 100%;
+      height: auto;
+      display: block;
+      will-change: transform, opacity;
+    }
+
+    @keyframes burstBook1 {
+      0% {
+        transform: translate(330px, 240px) scale(0.12) rotate(-15deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(-12px, -8px) scale(1.04) rotate(7deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes burstBook2 {
+      0% {
+        transform: translate(-330px, 240px) scale(0.12) rotate(15deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(12px, -8px) scale(1.04) rotate(9deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes burstBook3 {
+      0% {
+        transform: translate(350px, -20px) scale(0.12) rotate(-20deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(-10px, 0px) scale(1.04) rotate(-9deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes burstBook4 {
+      0% {
+        transform: translate(-350px, -20px) scale(0.12) rotate(20deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(10px, 0px) scale(1.04) rotate(8deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes burstBook5 {
+      0% {
+        transform: translate(180px, -290px) scale(0.12) rotate(-10deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(-6px, 8px) scale(1.04) rotate(-3deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes burstBook6 {
+      0% {
+        transform: translate(-180px, -290px) scale(0.12) rotate(10deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      72% {
+        transform: translate(6px, 8px) scale(1.04) rotate(6deg);
+      }
+      100% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .book-burst-1 { animation: burstBook1 1.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .book-burst-2 { animation: burstBook2 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both; }
+    .book-burst-3 { animation: burstBook3 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.10s both; }
+    .book-burst-4 { animation: burstBook4 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+    .book-burst-5 { animation: burstBook5 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both; }
+    .book-burst-6 { animation: burstBook6 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
 
     /* Balanced positions tightly framing the centerpiece with breathing room */
     .book-pos-1 { top: 10%; left: calc(50% - 490px); width: 235px; animation: floatBook1 5.2s ease-in-out infinite; }
@@ -722,7 +875,7 @@
       .book-pos-4 { left: calc(50% + 200px); width: 210px; top: 49%; }
       .book-pos-5 { left: calc(50% - 225px); width: 180px; bottom: -65px; }
       .book-pos-6 { left: calc(50% + 55px); width: 190px; bottom: -70px; }
-      .hero-logo-img { width: 450px; }
+      .hero-logo-wrapper { width: 440px; margin: -25px auto -20px; }
       .books-grid { grid-template-columns: repeat(2, 1fr); }
       .steps-grid { grid-template-columns: repeat(1, 1fr); }
       .bento-grid { grid-template-columns: repeat(1, 1fr); }
@@ -745,6 +898,8 @@
         flex-direction: column;
       }
       .hero-circle-bg { width: 440px; height: 440px; }
+      .hero-logo-wrapper { width: 360px; max-width: 90vw; margin: -10px auto 0; }
+      .book-burst-wrap { animation: none !important; transform: none !important; opacity: 1 !important; }
       .floating-books-wrap {
         position: static;
         inset: auto;
@@ -811,13 +966,13 @@
     <!-- Centerpiece -->
     <section class="hero-center">
       
-      <!-- Linocut Hands Logo Artwork (SELAHVITY LOGO.png) -->
-      <img 
-        src="assets/images/selahvity_hero_logo_v6.png?v=9" 
-        alt="SELAHVITY BOOK CLUB" 
-        class="hero-logo-img"
-        width="1785" height="1327"
-      >
+      <!-- Animated Linocut Hands Logo (Stop-motion opening on load, then floating flow) -->
+      <div class="hero-logo-wrapper" id="heroLogoWrapper" title="Selahvity Book Club (Haz clic para revivir la animación)">
+        <canvas id="heroLogoCanvas" width="2000" height="2000" class="hero-logo-canvas"></canvas>
+        <noscript>
+          <img src="assets/images/selahvity_hero_logo_v6.png?v=9" alt="SELAHVITY BOOK CLUB" class="hero-logo-fallback">
+        </noscript>
+      </div>
 
       <!-- Action Button -->
       <a href="#unirme" class="hero-btn">
@@ -832,36 +987,48 @@
 
     </section>
 
-    <!-- 3D FLOATING BOOKS SURROUNDING THE CIRCLE (Exact layout from user mockup) -->
+    <!-- 3D FLOATING BOOKS SURROUNDING THE CIRCLE (Burst entrance from center on load, then gentle floating) -->
     <div class="floating-books-wrap">
        <!-- 1. Cartas de un diablo a su sobrino (Top-Left) -->
        <div class="floating-book book-pos-1" title="Cartas de un diablo a su sobrino - C. S. Lewis">
-         <img src="assets/images/book_hero_3.png?v=9" alt="Cartas de un diablo a su sobrino" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-1">
+           <img src="assets/images/book_hero_3.png?v=9" alt="Cartas de un diablo a su sobrino" class="floating-book-img" loading="eager">
+         </div>
        </div>
 
        <!-- 2. Las Crónicas de Narnia (Top-Right) -->
        <div class="floating-book book-pos-2" title="Las Crónicas de Narnia">
-         <img src="assets/images/book_hero_1.png?v=9" alt="Las Crónicas de Narnia" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-2">
+           <img src="assets/images/book_hero_1.png?v=9" alt="Las Crónicas de Narnia" class="floating-book-img" loading="eager">
+         </div>
        </div>
 
        <!-- 3. Los Hermanos Karamázov (Mid-Left) -->
        <div class="floating-book book-pos-3" title="Los Hermanos Karamázov - Fiódor Dostoyevski">
-         <img src="assets/images/book_hero_99.png?v=9" alt="Los Hermanos Karamázov" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-3">
+           <img src="assets/images/book_hero_99.png?v=9" alt="Los Hermanos Karamázov" class="floating-book-img" loading="eager">
+         </div>
        </div>
 
        <!-- 4. El Señor de los Anillos (Mid-Right) -->
        <div class="floating-book book-pos-4" title="El Señor de los Anillos - J. R. R. Tolkien">
-         <img src="assets/images/book_hero_4.png?v=9" alt="El Señor de los Anillos" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-4">
+           <img src="assets/images/book_hero_4.png?v=9" alt="El Señor de los Anillos" class="floating-book-img" loading="eager">
+         </div>
        </div>
 
        <!-- 5. Más allá del planeta silencioso (Bottom-Left) -->
        <div class="floating-book book-pos-5" title="Más allá del planeta silencioso - C. S. Lewis">
-         <img src="assets/images/book_hero_9.png?v=9" alt="Más allá del planeta silencioso" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-5">
+           <img src="assets/images/book_hero_9.png?v=9" alt="Más allá del planeta silencioso" class="floating-book-img" loading="eager">
+         </div>
        </div>
 
        <!-- 6. El Hobbit (Bottom-Right) -->
        <div class="floating-book book-pos-6" title="El Hobbit - J. R. R. Tolkien">
-         <img src="assets/images/book_hero_7.png?v=9" alt="El Hobbit" class="floating-book-img" loading="eager">
+         <div class="book-burst-wrap book-burst-6">
+           <img src="assets/images/book_hero_7.png?v=9" alt="El Hobbit" class="floating-book-img" loading="eager">
+         </div>
        </div>
     </div>
 
@@ -1096,6 +1263,199 @@
     </a>
     <p class="footer-copy">© 2026 Selahvity. Un espacio para leer, conectar y habitar historias en comunidad.</p>
   </footer>
+
+  <!-- ========================================================
+       SELAHVITY LOGO OPENING ANIMATION SCRIPT
+       ======================================================== -->
+  <script>
+    (function() {
+      const canvas = document.getElementById('heroLogoCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const logoWrapper = document.getElementById('heroLogoWrapper');
+
+      const topRest = { x: 110, y: 344, w: 869, h: 560 };
+      const botRest = { x: 958, y: 1093, w: 927, h: 567 };
+      const selRest = { x: 474, y: 746, w: 1050, h: 244 };
+      const bkRest = { x: 461, y: 1012, w: 1078, h: 242 };
+
+      const textCenterX = 1000;
+      const textCenterY = 1000;
+
+      const imgTop = new Image();
+      const imgBot = new Image();
+      const imgSel = new Image();
+      const imgBk = new Image();
+
+      let loadedCount = 0;
+      function onImgLoaded() {
+        loadedCount++;
+        if (loadedCount === 4) {
+          startAnimation();
+        }
+      }
+
+      imgTop.onload = onImgLoaded;
+      imgBot.onload = onImgLoaded;
+      imgSel.onload = onImgLoaded;
+      imgBk.onload = onImgLoaded;
+
+      imgTop.src = 'assets/images/animation/hand_top.png';
+      imgBot.src = 'assets/images/animation/hand_bottom.png';
+      imgSel.src = 'assets/images/animation/text_selahvity.png';
+      imgBk.src = 'assets/images/animation/text_book_club.png';
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function getHandWave(fid, seed) {
+        const t = fid * 0.12;
+        return {
+          hx: Math.sin(t + seed) * 1.4,
+          hy: Math.cos(t * 0.9 + seed) * 1.2,
+          hr: Math.sin(t * 0.7 + seed) * 0.003
+        };
+      }
+
+      let frameId = 0;
+
+      function draw(p) {
+        ctx.clearRect(0, 0, 2000, 2000);
+
+        const angle = Math.atan2(752.5, 877.0);
+        const closeDistance = 350;
+        const maxDx = Math.cos(angle) * closeDistance;
+        const maxDy = Math.sin(angle) * closeDistance;
+
+        const openEase = easeInOutCubic(p);
+        const remain = 1.0 - openEase;
+
+        const topDx = maxDx * remain;
+        const topDy = maxDy * remain;
+        const botDx = -maxDx * remain;
+        const botDy = -maxDy * remain;
+
+        const wTop = (p < 1.0) ? getHandWave(frameId, 1) : { hx: 0, hy: 0, hr: 0 };
+        const wBot = (p < 1.0) ? getHandWave(frameId, 2) : { hx: 0, hy: 0, hr: 0 };
+
+        const textScale = Math.pow(openEase, 1.2);
+        const textOpacity = Math.min(1.0, openEase * 1.8);
+
+        if (textScale > 0.01 && textOpacity > 0.01) {
+          const numSlices = 36;
+
+          // Draw SELAHVITY
+          for (let i = 0; i < numSlices; i++) {
+            const frac = i / numSlices;
+            const startT = 0.05 + frac * 0.40;
+            const durT = 0.30;
+            const u = Math.max(0, Math.min(1, (openEase - startT) / durT));
+            if (u <= 0.001) continue;
+
+            const curlY = Math.sin(u * Math.PI) * 12.0 * (1.0 - u) * -1;
+            const sliceAlpha = Math.min(1.0, u * 2.5) * textOpacity;
+
+            ctx.save();
+            ctx.translate(textCenterX, textCenterY);
+            ctx.scale(textScale, textScale);
+            ctx.translate(-textCenterX, -textCenterY);
+
+            const sliceW = selRest.w / numSlices;
+            const sx = i * (imgSel.width / numSlices);
+            const sw = imgSel.width / numSlices;
+            const dx = selRest.x + i * sliceW;
+            const dy = selRest.y + curlY;
+
+            ctx.globalAlpha = sliceAlpha;
+            ctx.drawImage(imgSel, sx, 0, sw, imgSel.height, dx, dy, sliceW, selRest.h);
+            ctx.restore();
+          }
+
+          // Draw BOOK CLUB
+          for (let i = 0; i < numSlices; i++) {
+            const frac = i / numSlices;
+            const startT = 0.08 + frac * 0.42;
+            const durT = 0.30;
+            const u = Math.max(0, Math.min(1, (openEase - startT) / durT));
+            if (u <= 0.001) continue;
+
+            const curlY = Math.sin(u * Math.PI) * 12.0 * (1.0 - u) * 1;
+            const sliceAlpha = Math.min(1.0, u * 2.5) * textOpacity;
+
+            ctx.save();
+            ctx.translate(textCenterX, textCenterY);
+            ctx.scale(textScale, textScale);
+            ctx.translate(-textCenterX, -textCenterY);
+
+            const sliceW = bkRest.w / numSlices;
+            const sx = i * (imgBk.width / numSlices);
+            const sw = imgBk.width / numSlices;
+            const dx = bkRest.x + i * sliceW;
+            const dy = bkRest.y + curlY;
+
+            ctx.globalAlpha = sliceAlpha;
+            ctx.drawImage(imgBk, sx, 0, sw, imgBk.height, dx, dy, sliceW, bkRest.h);
+            ctx.restore();
+          }
+        }
+
+        // Top Hand
+        ctx.save();
+        const tcx = topRest.x + topRest.w / 2;
+        const tcy = topRest.y + topRest.h / 2;
+        ctx.translate(tcx + topDx + wTop.hx, tcy + topDy + wTop.hy);
+        ctx.rotate(remain * 0.06 + wTop.hr);
+        ctx.translate(-tcx, -tcy);
+        ctx.drawImage(imgTop, topRest.x, topRest.y, topRest.w, topRest.h);
+        ctx.restore();
+
+        // Bottom Hand
+        ctx.save();
+        const bcx = botRest.x + botRest.w / 2;
+        const bcy = botRest.y + botRest.h / 2;
+        ctx.translate(bcx + botDx + wBot.hx, bcy + botDy + wBot.hy);
+        ctx.rotate(-remain * 0.06 + wBot.hr);
+        ctx.translate(-bcx, -bcy);
+        ctx.drawImage(imgBot, botRest.x, botRest.y, botRest.w, botRest.h);
+        ctx.restore();
+      }
+
+      let animStartTime = null;
+      const durationMs = 1850;
+
+      function step(now) {
+        if (!animStartTime) animStartTime = now;
+        const elapsed = now - animStartTime;
+        const p = Math.min(1.0, elapsed / durationMs);
+        frameId++;
+        draw(p);
+
+        if (p < 1.0) {
+          requestAnimationFrame(step);
+        } else {
+          // Finished opening! Lock at 1.0 and enable continuous gentle floating flow
+          draw(1.0);
+          if (logoWrapper) logoWrapper.classList.add('is-floating');
+        }
+      }
+
+      function startAnimation() {
+        if (logoWrapper) logoWrapper.classList.remove('is-floating');
+        animStartTime = null;
+        frameId = 0;
+        draw(0);
+        requestAnimationFrame(step);
+      }
+
+      // Replay on logo click for interactive delight
+      if (logoWrapper) {
+        logoWrapper.addEventListener('click', function() {
+          startAnimation();
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
