@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SELAHVITY</title>
+  <title>SELAHVITY - Book Club</title>
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/favicon.png">
 
@@ -21,15 +21,23 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     :root {
       --bg: #F5F4EE;
+      --bg-alt: #EFECE1;
       --circle-bg: #EAE8DE;
       --text-main: #131311;
-      --text-muted: #4A4A45;
+      --text-muted: #52524D;
       --lime: #C6FD50;
-      --lime-hover: #D4FE6E;
+      --lime-hover: #D5FE6F;
       --border-dark: #131311;
       --card-bg: #FCFBF7;
+      --dark-section: #131311;
+      --dark-card: #1C1D1A;
+      --dark-border: #2A2A27;
     }
 
     body {
@@ -62,7 +70,6 @@
       pointer-events: auto;
     }
 
-    /* Brand Logo (Lamb between hands) */
     .nav-brand {
       display: inline-flex;
       align-items: center;
@@ -74,14 +81,13 @@
       transform: scale(1.06);
     }
     .nav-brand-img {
-      height: 48px;
+      height: 46px;
       width: auto;
       object-fit: contain;
       display: block;
       background: transparent;
     }
 
-    /* Pill Navigation Menu */
     .nav-menu {
       display: flex;
       align-items: center;
@@ -108,7 +114,6 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    /* Navbar Action Button */
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -143,7 +148,54 @@
     }
 
     /* ========================================================
-       HERO STAGE (CENTER & SURROUNDING CARDS)
+       SHARED SECTION UTILITIES
+       ======================================================== */
+    .section-wrap {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--text-main);
+      color: #FAF9F5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .badge-lime {
+      background: var(--lime);
+      color: var(--text-main);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 620px;
+      font-weight: 500;
+      margin-bottom: 48px;
+    }
+
+    /* ========================================================
+       1. HERO STAGE (CENTER & SURROUNDING CARDS)
        ======================================================== */
     .hero-stage {
       position: relative;
@@ -154,10 +206,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 90px 24px 40px;
+      padding: 100px 24px 60px;
     }
 
-    /* The Large Background Circle (ProjectOne signature) */
     .hero-circle-bg {
       position: absolute;
       top: 50%;
@@ -173,7 +224,6 @@
       pointer-events: none;
     }
 
-    /* Center Stage Column */
     .hero-center {
       position: relative;
       z-index: 2;
@@ -186,19 +236,17 @@
       width: 100%;
     }
 
-    /* 1. Large Linocut Artwork */
     .hero-logo-img {
-      width: 600px;
+      width: 620px;
       max-width: 90vw;
       height: auto;
       object-fit: contain;
       display: block;
-      margin: 0 auto 18px;
+      margin: 0 auto 16px;
       mix-blend-mode: multiply;
-      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.08));
     }
 
-    /* 2. Lime Action Button */
     .hero-btn {
       display: inline-flex;
       align-items: center;
@@ -224,10 +272,6 @@
       transform: translate(-2px, -2px);
       box-shadow: 6px 5px 0px var(--border-dark);
     }
-    .hero-btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 1px 0px var(--border-dark);
-    }
     .hero-btn-arrow {
       display: flex;
       align-items: center;
@@ -246,7 +290,6 @@
       fill: none;
     }
 
-    /* 3. Description */
     .hero-desc {
       font-size: 1.15rem;
       line-height: 1.65;
@@ -257,9 +300,7 @@
       padding: 0 12px;
     }
 
-    /* ========================================================
-       FLOATING BOOK CARDS (POSITIONED AROUND THE CENTER)
-       ======================================================== */
+    /* Floating Book Cards */
     .book-card {
       position: absolute;
       z-index: 5;
@@ -281,8 +322,6 @@
       box-shadow: 8px 12px 20px rgba(19, 19, 17, 0.15);
       z-index: 20;
     }
-
-    /* Cover Image Container */
     .book-card-cover-wrap {
       width: 172px;
       height: 155px;
@@ -304,8 +343,6 @@
     .book-card:hover .book-card-cover {
       transform: scale(1.05);
     }
-
-    /* Label underneath */
     .book-card-label {
       font-size: 11px;
       font-weight: 800;
@@ -315,37 +352,360 @@
       padding: 0 4px;
     }
 
-    /* Precise Positions around Center Circle (Exact reference layout) */
-    /* 1. Top-Left Card: Prince Caspian */
-    .card-top-left {
-      top: 14%;
-      left: 5%;
-      transform: rotate(-13deg);
+    .card-top-left { top: 14%; left: 5%; transform: rotate(-13deg); }
+    .card-top-right { top: 12%; right: 5%; transform: rotate(18deg); }
+    .card-bottom-left { bottom: 8%; left: 7%; transform: rotate(-22deg); }
+    .card-bottom-right { bottom: 10%; right: 5%; transform: rotate(11deg); }
+
+    /* ========================================================
+       2. CÓMO FUNCIONA (#como-funciona)
+       ======================================================== */
+    .how-section {
+      background: #EFECE1;
+      border-top: 1.5px solid var(--border-dark);
+      border-bottom: 1.5px solid var(--border-dark);
     }
 
-    /* 2. Top-Right Card: The Silver Chair */
-    .card-top-right {
-      top: 12%;
-      right: 5%;
-      transform: rotate(18deg);
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
     }
 
-    /* 3. Bottom-Left Card: The Voyage of the Dawn Treader */
-    .card-bottom-left {
-      bottom: 10%;
-      left: 7%;
-      transform: rotate(-22deg);
+    .step-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 32px 26px;
+      box-shadow: 4px 4px 0px var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 6px 8px 0px var(--border-dark);
     }
 
-    /* 4. Bottom-Right Card: The Magician's Nephew */
-    .card-bottom-right {
-      bottom: 12%;
-      right: 5%;
-      transform: rotate(11deg);
+    .step-number {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--text-main);
+      background: var(--lime);
+      border: 1.5px solid var(--border-dark);
+      padding: 4px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      width: max-content;
+      letter-spacing: 0.04em;
+    }
+
+    .step-card-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: var(--text-main);
+    }
+
+    .step-card-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
     /* ========================================================
-       RESPONSIVE ADAPTABILITY
+       3. LIBROS DEL MES (#libros)
+       ======================================================== */
+    .books-section {
+      background: var(--bg);
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .book-item-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 4px 4px 0px var(--border-dark);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .book-item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 6px 8px 0px var(--border-dark);
+    }
+
+    .book-thumb-wrap {
+      width: 100%;
+      height: 240px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #131311;
+      border: 1.5px solid var(--border-dark);
+    }
+    .book-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .book-item-card:hover .book-thumb {
+      transform: scale(1.04);
+    }
+
+    .book-status-tag {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-dark);
+      width: max-content;
+    }
+    .tag-active {
+      background: var(--lime);
+      color: var(--text-main);
+    }
+    .tag-upcoming {
+      background: #EAE7DC;
+      color: var(--text-main);
+    }
+
+    .book-item-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+
+    .book-item-author {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ========================================================
+       4. COMUNIDAD (#comunidad) - DARK CONTRAST SECTION
+       ======================================================== */
+    .community-section {
+      background: var(--dark-section);
+      color: #FAF9F5;
+      border-top: 1.5px solid var(--border-dark);
+      border-bottom: 1.5px solid var(--border-dark);
+    }
+
+    .community-section .section-title {
+      color: #FAF9F5;
+    }
+    .community-section .section-subtitle {
+      color: #B5B5B0;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .bento-card {
+      background: var(--dark-card);
+      border: 1.5px solid var(--dark-border);
+      border-radius: 14px;
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .bento-card:hover {
+      border-color: var(--lime);
+      transform: translateY(-3px);
+    }
+
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: #272824;
+      border: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .bento-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+
+    .bento-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #A3A39E;
+      font-weight: 500;
+    }
+
+    /* Community Testimonial Highlight */
+    .community-quote {
+      margin-top: 36px;
+      background: var(--dark-card);
+      border: 1.5px solid var(--dark-border);
+      border-left: 6px solid var(--lime);
+      border-radius: 14px;
+      padding: 30px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .quote-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ECEBE4;
+      line-height: 1.6;
+    }
+    .quote-author {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--lime);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ========================================================
+       5. PREGUNTAS FRECUENTES (#preguntas)
+       ======================================================== */
+    .faq-section {
+      background: var(--bg);
+    }
+
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 860px;
+      margin: 36px auto 0;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      cursor: pointer;
+      transition: box-shadow 0.15s ease;
+    }
+    .faq-item:hover {
+      box-shadow: 5px 5px 0px var(--border-dark);
+    }
+
+    .faq-question {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .faq-toggle {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--text-main);
+      transition: transform 0.2s ease;
+    }
+    .faq-answer {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ========================================================
+       6. FINAL CTA BANNER & FOOTER (#unirme)
+       ======================================================== */
+    .cta-banner-wrap {
+      padding: 60px 24px 100px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .cta-banner {
+      background: var(--dark-section);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 64px 36px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 6px 6px 0px var(--border-dark);
+    }
+
+    .cta-banner .badge {
+      background: var(--lime);
+      color: var(--text-main);
+    }
+
+    .cta-banner .section-title {
+      color: #FAF9F5;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .cta-banner .hero-btn {
+      margin-top: 12px;
+      font-size: 16px;
+      padding: 14px 32px;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1.5px solid var(--border-dark);
+      background: #EFECE1;
+      padding: 40px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 100%;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ========================================================
+       RESPONSIVE DESIGN
        ======================================================== */
     @media (max-width: 1120px) {
       .card-top-left { left: 2%; top: 12%; }
@@ -355,6 +715,9 @@
       .hero-logo-img { width: 500px; }
       .book-card { width: 175px; }
       .book-card-cover-wrap { width: 152px; height: 138px; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(1, 1fr); }
+      .bento-grid { grid-template-columns: repeat(1, 1fr); }
     }
 
     @media (max-width: 900px) {
@@ -382,12 +745,17 @@
         max-width: 520px;
       }
       .book-card-cover-wrap { width: 100%; height: 160px; }
+      .books-grid { grid-template-columns: 1fr; }
+      .community-quote { flex-direction: column; align-items: flex-start; }
+      .footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP NAVBAR -->
+  <!-- ========================================================
+       TOP NAVBAR
+       ======================================================== -->
   <header class="navbar-container">
     <a href="#" class="nav-brand" aria-label="SELAHVITY">
       <img src="assets/images/selahvity_lamb_logo.png" alt="SELAHVITY" class="nav-brand-img">
@@ -405,7 +773,9 @@
     </nav>
   </header>
 
-  <!-- MAIN HERO STAGE -->
+  <!-- ========================================================
+       1. MAIN HERO STAGE
+       ======================================================== -->
   <main class="hero-stage">
     
     <!-- Background Highlight Circle -->
@@ -441,8 +811,7 @@
 
     </section>
 
-    <!-- FLOATING BOOK CARDS SURROUNDING THE CIRCLE -->
-    <!-- 1. Top-Left: Prince Caspian -->
+    <!-- FLOATING BOOK CARDS SURROUNDING THE CIRCLE (Desktop) -->
     <article class="book-card card-top-left">
       <div class="book-card-cover-wrap">
         <img src="assets/images/book_prince_caspian.jpg" alt="El Príncipe Caspian" class="book-card-cover" loading="eager">
@@ -450,7 +819,6 @@
       <span class="book-card-label">EL PRÍNCIPE CASPIAN</span>
     </article>
 
-    <!-- 2. Top-Right: The Silver Chair -->
     <article class="book-card card-top-right">
       <div class="book-card-cover-wrap">
         <img src="assets/images/book_silver_chair.jpg" alt="La Silla de Plata" class="book-card-cover" loading="eager">
@@ -458,7 +826,6 @@
       <span class="book-card-label">LA SILLA DE PLATA</span>
     </article>
 
-    <!-- 3. Bottom-Left: The Voyage of the Dawn Treader -->
     <article class="book-card card-bottom-left">
       <div class="book-card-cover-wrap">
         <img src="assets/images/book_dawn_treader.jpg" alt="La Travesía del Viajero del Alba" class="book-card-cover" loading="eager">
@@ -466,7 +833,6 @@
       <span class="book-card-label">VIAJERO DEL ALBA</span>
     </article>
 
-    <!-- 4. Bottom-Right: The Magician's Nephew -->
     <article class="book-card card-bottom-right">
       <div class="book-card-cover-wrap">
         <img src="assets/images/book_magicians_nephew.jpg" alt="El Sobrino del Mago" class="book-card-cover" loading="eager">
@@ -475,6 +841,236 @@
     </article>
 
   </main>
+
+  <!-- ========================================================
+       2. CÓMO FUNCIONA (#como-funciona)
+       ======================================================== -->
+  <section id="como-funciona" class="how-section">
+    <div class="section-wrap">
+      <span class="badge badge-lime">PASO A PASO</span>
+      <h2 class="section-title">Leer juntos nunca fue tan simple.</h2>
+      <p class="section-subtitle">
+        Una dinámica mensual diseñada para disfrutar la lectura sin presiones, compartiendo impresiones y habitando la historia a fondo.
+      </p>
+
+      <div class="steps-grid">
+        <!-- Paso 1 -->
+        <div class="step-card">
+          <span class="step-number">SEMANA 01</span>
+          <h3 class="step-card-title">Comienza la aventura</h3>
+          <p class="step-card-text">
+            Presentamos la obra del mes con su contexto histórico y literario. Recibes el cronograma sugerido para avanzar a tu propio ritmo.
+          </p>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="step-card">
+          <span class="step-number">SEMANAS 02 - 03</span>
+          <h3 class="step-card-title">Debates y conexiones</h3>
+          <p class="step-card-text">
+            Habilitamos canales temáticos para compartir citas favoritas, reflexiones filosóficas, personajes entrañables y preguntas detonantes.
+          </p>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="step-card">
+          <span class="step-number">SEMANA 04</span>
+          <h3 class="step-card-title">Tertulia de cierre</h3>
+          <p class="step-card-text">
+            Nos encontramos virtualmente en vivo para celebrar el cierre del libro, desgranar sus símbolos profundos y elegir la siguiente lectura.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       3. LIBROS DEL MES (#libros)
+       ======================================================== -->
+  <section id="libros" class="books-section">
+    <div class="section-wrap">
+      <span class="badge">BIBLIOTECA & CICLOS</span>
+      <h2 class="section-title">Grandes historias que inspiran.</h2>
+      <p class="section-subtitle">
+        Seleccionamos clásicos de la literatura y joyas de la fantasía que dejan huella y despiertan el asombro.
+      </p>
+
+      <div class="books-grid">
+        <!-- Libro 1 -->
+        <div class="book-item-card">
+          <div class="book-thumb-wrap">
+            <img src="assets/images/book_prince_caspian.jpg" alt="El Príncipe Caspian" class="book-thumb" loading="lazy">
+          </div>
+          <span class="book-status-tag tag-active">LECTURA ACTUAL</span>
+          <h3 class="book-item-title">El Príncipe Caspian</h3>
+          <span class="book-item-author">C. S. Lewis</span>
+        </div>
+
+        <!-- Libro 2 -->
+        <div class="book-item-card">
+          <div class="book-thumb-wrap">
+            <img src="assets/images/book_silver_chair.jpg" alt="La Silla de Plata" class="book-thumb" loading="lazy">
+          </div>
+          <span class="book-status-tag tag-upcoming">PRÓXIMO MES</span>
+          <h3 class="book-item-title">La Silla de Plata</h3>
+          <span class="book-item-author">C. S. Lewis</span>
+        </div>
+
+        <!-- Libro 3 -->
+        <div class="book-item-card">
+          <div class="book-thumb-wrap">
+            <img src="assets/images/book_dawn_treader.jpg" alt="La Travesía del Viajero del Alba" class="book-thumb" loading="lazy">
+          </div>
+          <span class="book-status-tag tag-upcoming">NOVIEMBRE</span>
+          <h3 class="book-item-title">La Travesía del Viajero del Alba</h3>
+          <span class="book-item-author">C. S. Lewis</span>
+        </div>
+
+        <!-- Libro 4 -->
+        <div class="book-item-card">
+          <div class="book-thumb-wrap">
+            <img src="assets/images/book_magicians_nephew.jpg" alt="El Sobrino del Mago" class="book-thumb" loading="lazy">
+          </div>
+          <span class="book-status-tag tag-upcoming">DICIEMBRE</span>
+          <h3 class="book-item-title">El Sobrino del Mago</h3>
+          <span class="book-item-author">C. S. Lewis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. COMUNIDAD (#comunidad)
+       ======================================================== -->
+  <section id="comunidad" class="community-section">
+    <div class="section-wrap">
+      <span class="badge badge-lime">EN COMUNIDAD</span>
+      <h2 class="section-title">Más que leer: un espacio para habitar la belleza.</h2>
+      <p class="section-subtitle">
+        Una comunidad donde las historias cobran vida a través de conversaciones honestas y personas que comparten tu misma pasión.
+      </p>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-icon">📖</div>
+          <h3 class="bento-title">Sin carreras ni presión</h3>
+          <p class="bento-text">
+            Aquí no competimos por cuántos libros lees al año. El valor está en paladear cada página, reflexionar y compartir con calma.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">✨</div>
+          <h3 class="bento-title">Sentido y trascendencia</h3>
+          <p class="bento-text">
+            Buscamos la verdad, el heroísmo y la esperanza escondidos en los grandes relatos para enriquecer nuestra vida diaria.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="bento-icon">🤝</div>
+          <h3 class="bento-title">Amistades literarias</h3>
+          <p class="bento-text">
+            Conecta con personas afines en tertulias cercanas y respetuosas donde cada perspectiva aporta un nuevo matiz al libro.
+          </p>
+        </div>
+      </div>
+
+      <div class="community-quote">
+        <p class="quote-text">
+          «Un libro leído en soledad conmueve el alma; pero un libro compartido en comunidad transforma el corazón.»
+        </p>
+        <span class="quote-author">— Selahvity Lectores</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. PREGUNTAS FRECUENTES (#preguntas)
+       ======================================================== -->
+  <section id="preguntas" class="faq-section">
+    <div class="section-wrap">
+      <span class="badge">RESOLVEMOS TUS DUDAS</span>
+      <h2 class="section-title">Preguntas frecuentes</h2>
+      <p class="section-subtitle">
+        Todo lo que necesitas saber antes de sumarte a nuestra próxima lectura.
+      </p>
+
+      <div class="faq-grid">
+        <details class="faq-item">
+          <summary class="faq-question">
+            ¿Cómo me uno al Book Club?
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-answer">
+            Solo necesitas hacer clic en el botón «UNIRME», dejar tu correo y te enviaremos inmediatamente la invitación a nuestra comunidad de lectores y la guía del mes.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            ¿En qué formato debo leer el libro?
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-answer">
+            El formato es libre: libro físico de cualquier editorial, lector digital (Kindle, Kobo, PDF) o audiolibro. Lo importante es acompañarnos en la historia.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            ¿Qué pasa si me atraso con las lecturas?
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-answer">
+            ¡Absolutamente nada! El club promueve una lectura libre de culpa. Todas las tertulias y notas de lectura quedan guardadas para que puedas consultarlas cuando avances.
+          </p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            ¿Tiene algún costo formar parte?
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-answer">
+            El acceso general al club de lectura y a las tertulias mensuales es libre y gratuito. Buscamos fomentar el amor por los libros en comunidad.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. FINAL CTA BANNER & FOOTER (#unirme)
+       ======================================================== -->
+  <section id="unirme" class="cta-banner-wrap">
+    <div class="cta-banner">
+      <span class="badge">PLAZAS ABIERTAS</span>
+      <h2 class="section-title">¿Listo para habitar la próxima gran historia?</h2>
+      <p class="section-subtitle" style="color: #B5B5B0; margin-bottom: 24px;">
+        Súmate hoy a Selahvity Book Club y comparte tu próxima lectura con nosotros.
+      </p>
+
+      <a href="https://t.me/+Selahvity" target="_blank" rel="noopener" class="hero-btn">
+        <span>UNIRME AL CLUB AHORA</span>
+        <span class="hero-btn-arrow">
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="#" class="footer-brand">
+      <img src="assets/images/selahvity_lamb_logo.png" alt="SELAHVITY" style="height: 32px; width: auto;">
+      <span>SELAHVITY BOOK CLUB</span>
+    </a>
+    <p class="footer-copy">© 2026 Selahvity. Un espacio para leer, conectar y habitar historias en comunidad.</p>
+  </footer>
 
 </body>
 </html>
