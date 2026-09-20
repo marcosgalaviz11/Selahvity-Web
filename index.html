@@ -842,28 +842,6 @@
       background: transparent;
     }
 
-    .cloud-frame {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 175px;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.95;
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-    }
-
-    .cloud-frame-left {
-      left: 0;
-      background-image: url('assets/images/cloud_frame_left.png');
-    }
-
-    .cloud-frame-right {
-      right: 0;
-      background-image: url('assets/images/cloud_frame_right.png');
-    }
-
     .october-wrap {
       position: relative;
       z-index: 2;
@@ -874,12 +852,14 @@
 
     .october-header {
       text-align: center;
-      margin-bottom: 44px;
+      margin: 0 auto 44px;
+      max-width: 920px;
+      padding: 0 16px;
     }
 
     .october-arched-svg {
       width: 100%;
-      max-width: 780px;
+      max-width: 840px;
       height: auto;
       overflow: visible;
       filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 26px rgba(255, 230, 153, 0.4));
@@ -1446,7 +1426,6 @@
       .october-info-col { align-items: center; text-align: center; }
       .october-cta-row { justify-content: center; }
       .october-meta-box { text-align: left; max-width: 480px; width: 100%; }
-      .cloud-frame { width: 100px; opacity: 0.5; }
 
       /* Unified Floating Pill Navbar on Mobile (matching mockup) */
       .navbar-container {
@@ -1735,7 +1714,6 @@
 
       .books-grid { grid-template-columns: 1fr; }
       .experience-grid { grid-template-columns: 1fr; gap: 16px; }
-      .cloud-frame { display: none; }
       .october-book-stage { max-width: 290px; }
       .october-launch-section { padding: 60px 0 54px; }
       .community-quote { flex-direction: column; align-items: flex-start; }
@@ -1984,24 +1962,20 @@
   </section>
 
   <!-- ========================================================
-       3. ¡COMENZAMOS EL 10 DE OCTUBRE! (#comenzamos)
+       3. ¡COMENZAMOS EN OCTUBRE! (#comenzamos)
        ======================================================== -->
   <section id="comenzamos" class="october-launch-section">
-    <!-- Cloud Curtains framing left and right sides like in the mockup -->
-    <div class="cloud-frame cloud-frame-left" aria-hidden="true"></div>
-    <div class="cloud-frame cloud-frame-right" aria-hidden="true"></div>
-
     <div class="section-wrap october-wrap">
       <!-- Arched Golden Title -->
       <div class="october-header">
         <div class="section-arched-title-wrap">
-          <svg viewBox="0 0 820 120" class="october-arched-svg" aria-label="¡COMENZAMOS EL 10 DE OCTUBRE!">
+          <svg viewBox="0 0 960 130" class="october-arched-svg" aria-label="¡COMENZAMOS EN OCTUBRE!">
             <defs>
-              <path id="curveOct" d="M 30,95 Q 410,20 790,95" fill="transparent" />
+              <path id="curveOct" d="M 40,105 Q 480,25 920,105" fill="transparent" />
             </defs>
             <text fill="#FFE699" font-family="'Cinzel', 'Cinzel Decorative', Georgia, serif" font-weight="900" font-size="44" letter-spacing="0.14em">
               <textPath href="#curveOct" startOffset="50%" text-anchor="middle">
-                ¡COMENZAMOS EL 10 DE OCTUBRE!
+                ¡COMENZAMOS EN OCTUBRE!
               </textPath>
             </text>
           </svg>
