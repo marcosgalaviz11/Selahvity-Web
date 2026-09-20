@@ -736,57 +736,292 @@
       opacity: 1;
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 16px;
+    /* ========================================================
+       CÓMO FUNCIONA LA EXPERIENCIA SELAHVITY
+       ======================================================== */
+    .experience-header {
+      text-align: center;
+      margin: 64px auto 36px;
+      max-width: 980px;
     }
 
-    .step-card {
-      background: rgba(30, 8, 11, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .experience-arched-svg {
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 22px rgba(255, 230, 153, 0.35));
+    }
+
+    .experience-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 660px;
+      margin: 12px auto 0;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .experience-card {
+      background: rgba(20, 5, 8, 0.52);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1.5px solid rgba(223, 200, 150, 0.22);
-      border-radius: 18px;
-      padding: 32px 26px;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+      border-radius: 20px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-    .step-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 20px rgba(223, 200, 150, 0.18);
-      border-color: rgba(223, 200, 150, 0.45);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
-    .step-number {
-      font-size: 12px;
-      font-weight: 900;
-      color: #140506;
-      background: #DFC896;
-      border: 1.5px solid rgba(0, 0, 0, 0.2);
-      padding: 5px 12px;
-      border-radius: 8px;
-      display: inline-block;
-      width: max-content;
-      letter-spacing: 0.05em;
+    .experience-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75), 0 0 22px rgba(223, 200, 150, 0.2);
+      border-color: rgba(223, 200, 150, 0.5);
     }
 
-    .step-card-title {
-      font-size: 1.35rem;
+    .exp-card-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 183 / 173;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #0d0204;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .exp-card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .experience-card:hover .exp-card-thumb {
+      transform: scale(1.05);
+    }
+
+    .exp-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
       font-weight: 800;
-      line-height: 1.3;
-      color: #FAF9F5;
+      color: #DFC896;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
     }
 
-    .step-card-text {
-      font-size: 15px;
-      line-height: 1.6;
-      color: #D8D4CA;
+    .exp-card-desc {
+      font-family: var(--font-body);
+      font-size: 0.835rem;
+      line-height: 1.58;
+      color: rgba(245, 245, 240, 0.82);
       font-weight: 400;
+    }
+
+    /* ========================================================
+       ¡COMENZAMOS EL 10 DE OCTUBRE! (Featured Launch Section)
+       ======================================================== */
+    .october-launch-section {
+      position: relative;
+      padding: 100px 0 92px;
+      overflow: hidden;
+      border-top: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.12);
+      background: transparent;
+    }
+
+    .cloud-frame {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 175px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.95;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .cloud-frame-left {
+      left: 0;
+      background-image: url('assets/images/cloud_frame_left.png');
+    }
+
+    .cloud-frame-right {
+      right: 0;
+      background-image: url('assets/images/cloud_frame_right.png');
+    }
+
+    .october-wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .october-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .october-arched-svg {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 26px rgba(255, 230, 153, 0.4));
+    }
+
+    .october-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .october-book-stage {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .october-book-img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: contain;
+      filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 45px rgba(223, 200, 150, 0.25));
+      animation: floatSobrino 5.5s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes floatSobrino {
+      0%, 100% { transform: translateY(0px) rotate(-3deg); }
+      50% { transform: translateY(-14px) rotate(-1deg); }
+    }
+
+    .sparkle-star {
+      position: absolute;
+      color: #FFE699;
+      font-size: 26px;
+      line-height: 1;
+      text-shadow: 0 0 16px rgba(255, 230, 153, 0.9), 0 0 30px rgba(255, 230, 153, 0.5);
+      pointer-events: none;
+      user-select: none;
+      animation: pulseStar 3s ease-in-out infinite alternate;
+    }
+
+    .star-1 { top: 12%; right: 4%; animation-delay: 0.2s; font-size: 32px; }
+    .star-2 { bottom: 6%; left: 8%; animation-delay: 0.8s; font-size: 24px; }
+    .star-3 { top: 48%; right: -2%; animation-delay: 1.4s; font-size: 20px; }
+
+    @keyframes pulseStar {
+      0% { transform: scale(0.85); opacity: 0.65; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .october-info-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .october-book-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+      font-weight: 800;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .highlight-title {
+      color: #DFC896;
+      display: block;
+    }
+
+    .october-book-synopsis {
+      font-family: var(--font-body);
+      font-size: clamp(0.92rem, 1.1vw, 1rem);
+      line-height: 1.68;
+      color: rgba(255, 255, 255, 0.88);
+      margin-bottom: 24px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .october-meta-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+      font-family: var(--font-body);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .october-meta-row {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .october-meta-row .meta-label {
+      font-weight: 700;
+      color: #DFC896;
+      margin-right: 6px;
+    }
+
+    .october-meta-row .meta-val {
+      color: #F7F5F0;
+    }
+
+    .meta-row-full {
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .october-cta-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .october-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #CCEDFF;
+      color: #170407;
+      font-family: var(--font-body);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      padding: 13px 30px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), 0 0 0 2px rgba(255, 255, 255, 0.25);
+      transition: transform 0.25s ease, background 0.2s ease, box-shadow 0.25s ease;
+    }
+
+    .october-cta-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      background: #E2F4FF;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px rgba(204, 237, 255, 0.4);
     }
 
     /* Video Lightbox Modal */
@@ -1196,7 +1431,8 @@
       .book-pos-6 { left: calc(50% + 55px); width: 190px; bottom: -70px; }
       .hero-logo-wrapper { width: 440px; margin: -25px auto -20px; }
       .books-grid { grid-template-columns: repeat(2, 1fr); }
-      .steps-grid { grid-template-columns: repeat(1, 1fr); }
+      .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .october-grid { gap: 36px; }
       .bento-grid { grid-template-columns: repeat(1, 1fr); }
     }
 
@@ -1205,6 +1441,12 @@
         background-color: #3b0a0a;
         background-image: none;
       }
+
+      .october-grid { grid-template-columns: 1fr; text-align: center; }
+      .october-info-col { align-items: center; text-align: center; }
+      .october-cta-row { justify-content: center; }
+      .october-meta-box { text-align: left; max-width: 480px; width: 100%; }
+      .cloud-frame { width: 100px; opacity: 0.5; }
 
       /* Unified Floating Pill Navbar on Mobile (matching mockup) */
       .navbar-container {
@@ -1492,6 +1734,10 @@
       }
 
       .books-grid { grid-template-columns: 1fr; }
+      .experience-grid { grid-template-columns: 1fr; gap: 16px; }
+      .cloud-frame { display: none; }
+      .october-book-stage { max-width: 290px; }
+      .october-launch-section { padding: 60px 0 54px; }
       .community-quote { flex-direction: column; align-items: flex-start; }
       .footer { flex-direction: column; gap: 16px; text-align: center; }
     }
@@ -1667,32 +1913,153 @@
         </div>
       </div>
 
-      <div class="steps-grid">
-        <!-- Paso 1 -->
-        <div class="step-card">
-          <span class="step-number">SEMANA 01</span>
-          <h3 class="step-card-title">Comienza la aventura</h3>
-          <p class="step-card-text">
-            Presentamos la obra del mes con su contexto histórico y literario. Recibes el cronograma sugerido para avanzar a tu propio ritmo.
+      <!-- ========================================================
+           CÓMO FUNCIONA LA EXPERIENCIA SELAHVITY
+           ======================================================== -->
+      <div class="experience-header">
+        <div class="section-arched-title-wrap">
+          <svg viewBox="0 0 940 110" class="experience-arched-svg" aria-label="CÓMO FUNCIONA LA EXPERIENCIA SELAHVITY">
+            <defs>
+              <path id="curveExp" d="M 20,85 Q 470,20 920,85" fill="transparent" />
+            </defs>
+            <text fill="#FFE699" font-family="'Cinzel', 'Cinzel Decorative', Georgia, serif" font-weight="900" font-size="34" letter-spacing="0.10em">
+              <textPath href="#curveExp" startOffset="50%" text-anchor="middle">
+                CÓMO FUNCIONA LA EXPERIENCIA SELAHVITY
+              </textPath>
+            </text>
+          </svg>
+        </div>
+        <p class="experience-subtitle">
+          Un método paso a paso diseñado para que retomes el hábito, encuentres profundidad en cada página y nunca leas en solitario.
+        </p>
+      </div>
+
+      <!-- 4 Experience Cards Grid -->
+      <div class="experience-grid">
+        <!-- Card 1 -->
+        <div class="experience-card">
+          <div class="exp-card-thumb-wrap">
+            <img src="assets/images/card_habito.png" alt="El Hábito: Lectura guiada" class="exp-card-thumb" loading="lazy">
+          </div>
+          <h3 class="exp-card-title">El Hábito: Lectura guiada</h3>
+          <p class="exp-card-desc">
+            Avanzamos juntos con un calendario estructurado que divide cada libro en porciones amigables. Disfrutas de la lectura en casa, a tu propio ritmo durante la semana, convirtiendo este espacio en un momento de pausa y disfrute, no en una carga.
           </p>
         </div>
 
-        <!-- Paso 2 -->
-        <div class="step-card">
-          <span class="step-number">SEMANAS 02 - 03</span>
-          <h3 class="step-card-title">Debates y conexiones</h3>
-          <p class="step-card-text">
-            Habilitamos canales temáticos para compartir citas favoritas, reflexiones filosóficas, personajes entrañables y preguntas detonantes.
+        <!-- Card 2 -->
+        <div class="experience-card">
+          <div class="exp-card-thumb-wrap">
+            <img src="assets/images/card_enfoque.png" alt="El Enfoque: Lupa simbólica" class="exp-card-thumb" loading="lazy">
+          </div>
+          <h3 class="exp-card-title">El Enfoque: Lupa simbólica</h3>
+          <p class="exp-card-desc">
+            No solo leemos; exploramos el corazón de cada historia. A través de la lupa simbólica, trazamos paralelismos bíblicos, analizamos dilemas morales y conectamos las vivencias de los personajes con nuestra propia cotidianidad humana.
           </p>
         </div>
 
-        <!-- Paso 3 -->
-        <div class="step-card">
-          <span class="step-number">SEMANA 04</span>
-          <h3 class="step-card-title">Tertulia de cierre</h3>
-          <p class="step-card-text">
-            Nos encontramos virtualmente en vivo para celebrar el cierre del libro, desgranar sus símbolos profundos y elegir la siguiente lectura.
+        <!-- Card 3 -->
+        <div class="experience-card">
+          <div class="exp-card-thumb-wrap">
+            <img src="assets/images/card_vinculo.png" alt="El Vínculo: Nuestros encuentros" class="exp-card-thumb" loading="lazy">
+          </div>
+          <h3 class="exp-card-title">El Vínculo: Nuestros encuentros</h3>
+          <p class="exp-card-desc">
+            Nos reunimos semanalmente de forma virtual para compartir impresiones y debatir los hallazgos de la semana. Cerramos cada encuentro con una lectura conjunta en voz alta del siguiente capítulo clave para detonar la nueva etapa del viaje.
           </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="experience-card">
+          <div class="exp-card-thumb-wrap">
+            <img src="assets/images/card_apoyo.png" alt="El Apoyo: Kit de herramientas" class="exp-card-thumb" loading="lazy">
+          </div>
+          <h3 class="exp-card-title">El Apoyo: Kit de herramientas</h3>
+          <p class="exp-card-desc">
+            Nunca leerás en solitario. Proveemos material de apoyo diseñado para enriquecer la experiencia: calendarios oficiales en PDF, bitácoras para citas memorables, guías de análisis y acceso a nuestra comunidad para mantener la constancia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       3. ¡COMENZAMOS EL 10 DE OCTUBRE! (#comenzamos)
+       ======================================================== -->
+  <section id="comenzamos" class="october-launch-section">
+    <!-- Cloud Curtains framing left and right sides like in the mockup -->
+    <div class="cloud-frame cloud-frame-left" aria-hidden="true"></div>
+    <div class="cloud-frame cloud-frame-right" aria-hidden="true"></div>
+
+    <div class="section-wrap october-wrap">
+      <!-- Arched Golden Title -->
+      <div class="october-header">
+        <div class="section-arched-title-wrap">
+          <svg viewBox="0 0 820 120" class="october-arched-svg" aria-label="¡COMENZAMOS EL 10 DE OCTUBRE!">
+            <defs>
+              <path id="curveOct" d="M 30,95 Q 410,20 790,95" fill="transparent" />
+            </defs>
+            <text fill="#FFE699" font-family="'Cinzel', 'Cinzel Decorative', Georgia, serif" font-weight="900" font-size="44" letter-spacing="0.14em">
+              <textPath href="#curveOct" startOffset="50%" text-anchor="middle">
+                ¡COMENZAMOS EL 10 DE OCTUBRE!
+              </textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Two Column Layout: 3D Book on Left, Detailed Info on Right -->
+      <div class="october-grid">
+        <!-- Left: Floating 3D Book -->
+        <div class="october-book-col">
+          <div class="october-book-stage">
+            <img src="assets/images/book_floating_magician.png" alt="El Sobrino del Mago - C.S. Lewis" class="october-book-img">
+            <!-- Decorative golden sparkle stars -->
+            <span class="sparkle-star star-1" aria-hidden="true">✦</span>
+            <span class="sparkle-star star-2" aria-hidden="true">✦</span>
+            <span class="sparkle-star star-3" aria-hidden="true">✦</span>
+          </div>
+        </div>
+
+        <!-- Right: Book Info & Details -->
+        <div class="october-info-col">
+          <h3 class="october-book-heading">
+            El origen de todo:<br>
+            <span class="highlight-title">El sobrino del mago</span>
+          </h3>
+
+          <p class="october-book-synopsis">
+            Antes de que existiera un león, una bruja o un ropero mágico, hubo un bosque entre los mundos y una canción que le dio vida a un universo entero. Iniciamos nuestro viaje por Las Crónicas de Narnia con el libro que responde a todas las preguntas. Acompáñanos a descubrir cómo entró el mal a este mundo y cómo se forjaron los anillos que lo empezaron todo. Una lectura profunda sobre la creación, la tentación y el poder de las decisiones.
+          </p>
+
+          <div class="october-meta-box">
+            <div class="october-meta-row">
+              <span class="meta-label">Autor:</span>
+              <span class="meta-val">C.S. Lewis</span>
+            </div>
+            <div class="october-meta-row">
+              <span class="meta-label">Inicio de lectura:</span>
+              <span class="meta-val">10 de Octubre</span>
+            </div>
+            <div class="october-meta-row">
+              <span class="meta-label">Días de reunión:</span>
+              <span class="meta-val">Domingos en la tarde/noche</span>
+            </div>
+            <div class="october-meta-row meta-row-full">
+              <span class="meta-label">Temas a explorar:</span>
+              <span class="meta-val">El milagro de la creación, la caída a través del orgullo y el origen de las sombras.</span>
+            </div>
+          </div>
+
+          <div class="october-cta-row">
+            <a href="#unirme" class="october-cta-btn">
+              <span>UNIRME AL CLUB</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
