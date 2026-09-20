@@ -34,25 +34,25 @@
     }
 
     :root {
-      --bg: #1B0708;
-      --bg-alt: rgba(30, 10, 12, 0.90);
+      --bg: #F9F8F5;
+      --bg-alt: rgba(245, 243, 238, 0.95);
       --circle-bg: rgba(226, 88, 34, 0.15);
-      --text-main: #FAF9F5;
-      --text-muted: #D8D4CA;
+      --text-main: #1D1412;
+      --text-muted: #5C4A42;
       --accent: #E25822; /* Rojo naranjoso cálido */
       --accent-hover: #F16934;
-      --border-dark: rgba(255, 255, 255, 0.18);
+      --border-dark: rgba(91, 74, 66, 0.18);
       --card-bg: rgba(38, 14, 17, 0.88);
-      --dark-section: #120405;
-      --dark-card: #1C080A;
-      --dark-border: rgba(255, 255, 255, 0.14);
+      --dark-section: #F3F1EC;
+      --dark-card: #FFFFFF;
+      --dark-border: rgba(91, 74, 66, 0.14);
     }
 
     body {
-      background-color: #1A0708;
-      background-image: url('assets/images/bg_red_velvet.webp?v=11');
-      background-repeat: no-repeat;
-      background-size: cover;
+      background-color: #F9F8F5;
+      background-image: url('assets/images/bg_white_noise.png');
+      background-repeat: repeat;
+      background-size: 256px 256px;
       background-position: center top;
       background-attachment: fixed;
       color: var(--text-main);
@@ -121,7 +121,7 @@
       width: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 4px 12px rgba(19, 19, 17, 0.12));
+      filter: invert(0.92);
     }
 
     .nav-links-wrap {
@@ -283,7 +283,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.24)) drop-shadow(0 14px 28px rgba(0, 0, 0, 0.5));
+      filter: invert(0.92) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
       cursor: pointer;
       user-select: none;
       transition: transform 0.25s ease;
@@ -1524,12 +1524,13 @@
         justify-content: center;
       }
 
-      /* Hero Stage on Mobile: Uses the exact user background frame and dimensions */
+      /* Hero Stage on Mobile */
       .hero-stage {
-        background-image: url('assets/images/bg_mobile_exact.png?v=28');
-        background-size: cover;
+        background-color: #F9F8F5;
+        background-image: url('assets/images/bg_white_noise.png');
+        background-size: 256px 256px;
+        background-repeat: repeat;
         background-position: center top;
-        background-repeat: no-repeat;
         padding: 0;
         min-height: 100svh;
         height: 100svh;
@@ -1562,7 +1563,7 @@
         aspect-ratio: 1 / 1;
         margin: 0 auto;
         pointer-events: auto;
-        filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.22)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.5));
+        filter: invert(0.92) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
       }
 
       /* No bottom floating button on mobile (call-to-action is in top navbar) */
